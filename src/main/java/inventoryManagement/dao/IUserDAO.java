@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import inventoryManagement.dao.entities.User;
+import inventoryManagement.dao.entities.UserRole;
 import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -71,7 +72,7 @@ public class IUserDAO implements UserDAO {
 
 
     @Override
-    public List<User> getByRole(User.UserRole userRole) {
+    public List<User> getByRole(UserRole userRole) {
         MongoCursor<User> userMongoCursor = getCollection().find(Filters.eq("role", userRole.toString())).cursor();
         List<User> users = new ArrayList<>();
 

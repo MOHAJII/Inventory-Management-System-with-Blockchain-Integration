@@ -75,8 +75,6 @@ public class User {
                 '}';
     }
 
-    // Different users role
-    public enum UserRole {
-        ADMIN, PRODUCT_MANAGER, INVENTORY_MANAGER, GUEST;
-    }
+
+
 }

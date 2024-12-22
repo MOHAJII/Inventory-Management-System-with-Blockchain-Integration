@@ -1,0 +1,26 @@
+
+// Test connection and insertion :
+public static void main(String[] args) {
+        ConnectionDB connectionDB = ConnectionDB.getInstance();
+        assert connectionDB != null;
+        MongoDatabase database = connectionDB.getDatabase("inventoryManagement");
+
+        // Make sure you are working with the correct collection
+        MongoCollection<Recipe> recipeCollection = database.getCollection("recipes", Recipe.class);
+
+        // Inserting the list of recipes
+        List<Recipe> recipes = Arrays.asList(
+                new Recipe("elotes", Arrays.asList("corn", "mayonnaise", "cotija cheese", "sour cream", "lime"), 35),
+                new Recipe("loco moco", Arrays.asList("ground beef", "butter", "onion", "egg", "bread bun", "mushrooms"), 54)
+        );
+
+        // Insert recipes into the collection
+        try {
+            InsertManyResult result = recipeCollection.insertMany(recipes);
+            System.out.println("Inserted Recipes: " + result.getInsertedIds());
+        } catch (Exception e) {
+            System.out.println("Error inserting recipes: " + e.getMessage());
+        }
+    }
+
+

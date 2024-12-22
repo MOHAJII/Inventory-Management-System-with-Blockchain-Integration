@@ -1,0 +1,137 @@
+/* Inventory Management FXML Stylesheet */
+
+/* Root Background */
+.root-class {
+    -fx-background-color: #ecf0f1; /* Background color */
+    -fx-text-fill: #2c3e50; /* Text color */
+    -fx-font-family: "Roboto", sans-serif;
+}
+
+.roboto {
+-fx-font-family: "Roboto";
+}
+
+/* Headers */
+.header {
+    -fx-text-fill: #34495e; /* Primary color */
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Buttons */
+.button1 {
+    -fx-background-color: #1abc9c; /* Secondary color */
+    -fx-text-fill: #ffffff; /* White text for contrast */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+
+.button1:hover {
+    -fx-background-color: #16a085; /* Darker teal on hover */
+    -fx-cursor: hand;
+}
+
+.text-field2 {
+    -fx-background-color: #ecf0f1; /* Light gray for background */
+    -fx-background-radius: 5; /* Rounded corners */
+    -fx-border-color: #34495e; /* Dark gray border */
+    -fx-border-radius: 5; /* Match the background radius */
+    -fx-border-width: 1; /* Thin, clean border */
+    -fx-font-family: "Roboto"; /* Professional font */
+    -fx-font-size: 14px; /* Standard size */
+    -fx-text-fill: #2c3e50; /* Dark blue text */
+    -fx-padding: 8; /* Add padding inside the field */
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db; /* Highlight border on focus with blue */
+    -fx-border-width: 2; /* Slightly thicker border */
+}
+
+.text-field:disabled {
+    -fx-background-color: #bdc3c7; /* Lighter gray for disabled state */
+    -fx-border-color: #95a5a6; /* Muted gray border for disabled state */
+    -fx-text-fill: #7f8c8d; /* Muted gray text */
+}
+
+
+/* Warning/Alert Buttons */
+.alert-button {
+    -fx-background-color: #e74c3c; /* Accent color for alerts */
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+.alert-button:hover {
+    -fx-background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Text Fields */
+.text-field1 {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-text-fill: #34495e; /* Primary color for text */
+    -fx-border-color: #bdc3c7; /* Light gray border */
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+/* Table View */
+.table-view {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-text-fill: #2c3e50; /* Text color */
+    -fx-border-color: #bdc3c7; /* Border */
+    -fx-font-size: 14px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #34495e; /* Primary color for column headers */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-weight: bold;
+}
+
+.table-view .row-cell {
+    -fx-background-color: #ffffff; /* Alternate white rows */
+    -fx-text-fill: #2c3e50;
+}
+
+.table-view .row-cell:odd {
+    -fx-background-color: #f5f5f5; /* Light gray for alternate rows */
+}
+
+/* Notifications/Status */
+.notification {
+    -fx-background-color: #1abc9c; /* Secondary color for success */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-padding: 10;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.warning {
+    -fx-background-color: #e74c3c; /* Accent color for warnings */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-padding: 10;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+/* Footer */
+.footer {
+    -fx-background-color: #34495e; /* Primary color */
+    -fx-text-fill: #ecf0f1; /* Light text */
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+/* Tooltips */
+.tooltip {
+    -fx-background-color: #34495e; /* Primary color for tooltip background */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-padding: 5 10;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}

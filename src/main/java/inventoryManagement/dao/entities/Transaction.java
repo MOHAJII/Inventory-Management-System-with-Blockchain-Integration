@@ -1,6 +1,5 @@
 package inventoryManagement.dao.entities;
 
-import org.bson.BsonDateTime;
 import org.bson.types.ObjectId;
 
 import java.util.Date;

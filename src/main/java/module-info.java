@@ -12,6 +12,7 @@ module inventoryMangement{
     requires java.desktop;
     requires jbcrypt;
     requires io.github.cdimascio.dotenv.java;
+    requires redis.clients.jedis;
 
     opens inventoryManagement.controller to javafx.fxml;
     exports inventoryManagement;

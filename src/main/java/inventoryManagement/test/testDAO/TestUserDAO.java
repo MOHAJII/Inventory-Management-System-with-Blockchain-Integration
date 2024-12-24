@@ -2,6 +2,7 @@ package inventoryManagement.test.testDAO;
 
 import inventoryManagement.dao.IUserDAO;
 import inventoryManagement.dao.entities.User;
+import inventoryManagement.dao.entities.UserRole;
 import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -10,61 +11,61 @@ import java.util.Optional;
 
 public class TestUserDAO {
     public static void main(String[] args) {
-        List<User> testUsers = List.of(
-                new User(
-                        "admin_user",
-                        "securePass123",
-                        User.UserRole.ADMIN,
-                        "admin@example.com"
-                ),
-                new User(
-
-                        "manager01",
-                        "manageIt@456",
-                        User.UserRole.PRODUCT_MANAGER,
-                        "manager01@example.com"
-                ),
-                new User(
-
-                        "inventory_guru",
-                        "inventory$Pro",
-                        User.UserRole.INVENTORY_MANAGER,
-                        "inventory.guru@example.com"
-                ),
-                new User(
-
-                        "regular_user",
-                        "userPass789",
-                        User.UserRole.GUEST,
-                        "regular_user@example.com"
-                ),
-                new User(
-
-                        "john_doe",
-                        "john12345",
-                        User.UserRole.GUEST,
-                        "john.doe@example.com"
-                ),
-                new User(
-
-                        "super_admin",
-                        "superSecret456",
-                        User.UserRole.ADMIN,
-                        "super.admin@example.com"
-                ),
-                new User(
-                        "product_specialist",
-                        "prodSpec@2024",
-                        User.UserRole.PRODUCT_MANAGER,
-                        "prod.spec@example.com"
-                ),
-                new User(
-                        "warehouse_keeper",
-                        "keepInventory99",
-                        User.UserRole.INVENTORY_MANAGER,
-                        "warehouse.keeper@example.com"
-                )
-        );
+//        List<User> testUsers = List.of(
+//                new User(
+//                        "admin_user",
+//                        "securePass123",
+//                        User.UserRole.ADMIN,
+//                        "admin@example.com"
+//                ),
+//                new User(
+//
+//                        "manager01",
+//                        "manageIt@456",
+//                        User.UserRole.PRODUCT_MANAGER,
+//                        "manager01@example.com"
+//                ),
+//                new User(
+//
+//                        "inventory_guru",
+//                        "inventory$Pro",
+//                        User.UserRole.INVENTORY_MANAGER,
+//                        "inventory.guru@example.com"
+//                ),
+//                new User(
+//
+//                        "regular_user",
+//                        "userPass789",
+//                        User.UserRole.GUEST,
+//                        "regular_user@example.com"
+//                ),
+//                new User(
+//
+//                        "john_doe",
+//                        "john12345",
+//                        User.UserRole.GUEST,
+//                        "john.doe@example.com"
+//                ),
+//                new User(
+//
+//                        "super_admin",
+//                        "superSecret456",
+//                        User.UserRole.ADMIN,
+//                        "super.admin@example.com"
+//                ),
+//                new User(
+//                        "product_specialist",
+//                        "prodSpec@2024",
+//                        User.UserRole.PRODUCT_MANAGER,
+//                        "prod.spec@example.com"
+//                ),
+//                new User(
+//                        "warehouse_keeper",
+//                        "keepInventory99",
+//                        User.UserRole.INVENTORY_MANAGER,
+//                        "warehouse.keeper@example.com"
+//                )
+//        );
 
         IUserDAO userDAO = new IUserDAO();
 
@@ -115,7 +116,7 @@ public class TestUserDAO {
         User user = new User(
                 "fouad",
                 "1234",
-                User.UserRole.INVENTORY_MANAGER,
+                UserRole.INVENTORY_MANAGER,
                 "warehouse.keeper@example.com"
         );
 //        ObjectId save = userDAO.save(user);

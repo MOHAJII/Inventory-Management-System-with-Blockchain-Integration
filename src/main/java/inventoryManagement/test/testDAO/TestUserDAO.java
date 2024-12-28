@@ -2,11 +2,9 @@ package inventoryManagement.test.testDAO;
 
 import inventoryManagement.dao.IUserDAO;
 import inventoryManagement.dao.entities.User;
-import inventoryManagement.dao.entities.UserRole;
+import inventoryManagement.dao.entities.enums.UserRole;
 import org.bson.types.ObjectId;
-import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.List;
 import java.util.Optional;
 
 public class TestUserDAO {

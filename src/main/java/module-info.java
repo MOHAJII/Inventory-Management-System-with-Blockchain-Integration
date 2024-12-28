@@ -14,11 +14,12 @@ module inventoryMangement{
     requires io.github.cdimascio.dotenv.java;
     requires redis.clients.jedis;
 
-    opens inventoryManagement.controller to javafx.fxml;
+    opens inventoryManagement.service to javafx.fxml;
     exports inventoryManagement;
     exports inventoryManagement.dao;
     exports inventoryManagement.dao.entities;
     opens inventoryManagement.viewControler to javafx.fxml;
     exports inventoryManagement.test.testDAO;
+    exports inventoryManagement.dao.entities.enums;
 
 }

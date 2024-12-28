@@ -1,7 +1,7 @@
 package inventoryManagement.dao;
 
 import inventoryManagement.dao.entities.User;
-import inventoryManagement.dao.entities.UserRole;
+import inventoryManagement.dao.entities.enums.UserRole;
 import org.bson.types.ObjectId;
 
 import java.util.List;

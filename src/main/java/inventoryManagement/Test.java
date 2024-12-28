@@ -19,6 +19,6 @@ public class Test extends Application {
     }
 
     public static void main(String[] args) {
-        IProductDAO productDAO = new IProductDAO();
+        launch();
     }
 }

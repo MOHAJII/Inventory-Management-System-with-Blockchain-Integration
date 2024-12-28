@@ -1,9 +1,10 @@
 package inventoryManagement.dao.entities;
 
+import inventoryManagement.dao.entities.enums.TransactionType;
 import org.bson.types.ObjectId;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Map;
 
 public class Transaction {
     private ObjectId id;
@@ -12,12 +13,14 @@ public class Transaction {
     private ObjectId userId;
     private String bill;
     private Date date;
-    private List<Inventory> inventories; // List of all inventory ( each inventory referenced by product id )
+    private Map<String, Double> inventories; // Representing the inventories that changed
+    // Inventories<ProductId, Quantity> And then we map all the products and we change
+    // the inventory of that product
 
     public Transaction() {
     }
 
-    public Transaction(TransactionType transactionType, String description, ObjectId userId, String bill, Date date, List<Inventory> inventories) {
+    public Transaction(TransactionType transactionType, String description, ObjectId userId, String bill, Date date, Map<String, Double> inventories) {
         this.transactionType = transactionType;
         this.description = description;
         this.userId = userId;
@@ -74,11 +77,11 @@ public class Transaction {
         this.date = date;
     }
 
-    public List<Inventory> getInventories() {
+    public Map<String, Double> getInventories() {
         return inventories;
     }
 
-    public void setInventories(List<Inventory> inventories) {
+    public void setInventories(Map<String, Double> inventories) {
         this.inventories = inventories;
     }
 

@@ -1,5 +1,6 @@
 package inventoryManagement.dao.entities;
 
+import inventoryManagement.dao.entities.enums.UserRole;
 import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 

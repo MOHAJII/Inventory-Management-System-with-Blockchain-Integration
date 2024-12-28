@@ -1,8 +1,6 @@
 package inventoryManagement.viewControler;
 
-import inventoryManagement.controller.LoginControl;
-import inventoryManagement.controller.LoginErrorType;
-import inventoryManagement.controller.LoginResult;
+import inventoryManagement.service.LoginService;
 import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -18,8 +16,6 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class LoginPageController {
-
-
     @FXML
     private Label errorLabel;
 
@@ -40,17 +36,16 @@ public class LoginPageController {
     public void onSignIn(Event event) throws IOException {
         String userName = userNameField.getText();
         String password = passwordField.getText();
-        LoginControl loginControl = new LoginControl();
+        LoginService loginService = new LoginService();
 
         if (!userName.isEmpty() && !password.isEmpty()) {
-            LoginResult loginResult = loginControl.isLogin(userName, password);
-            if (loginResult.getErrorType() == null && loginResult.isSuccess()) {
+            if (loginService.isExist(userName) && loginService.isLogin(userName, password)) {
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/home-page.fxml"));
                 Scene newScene = new Scene(fxmlLoader.load(), 900, 500);
                 stage.setScene(newScene);
-            } else if (loginResult.getErrorType() == LoginErrorType.USER_NOT_FOUND) {
+            } else if (!loginService.isExist(userName)) {
                 displayErrorWithStyle("User Not found");
             } else displayErrorWithStyle("Password incorrect");
         } else {

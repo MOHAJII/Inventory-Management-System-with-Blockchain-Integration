@@ -9,6 +9,8 @@ public class Inventory {
     private String location;
     private int reorderThreshold; // Minimum Quantity before restocking
     private int reorderQuantity; // Suggestion quantity to reorder
+    private boolean lowStock = false;
+    private boolean outOfStock = false;
 
     public Inventory() {
     }
@@ -19,6 +21,8 @@ public class Inventory {
         this.quantity = quantity;
         this.reorderThreshold = reorderThreshold;
         this.reorderQuantity = reorderQuantity;
+        this.lowStock = this.quantity >= this.reorderThreshold;
+        this.outOfStock = this.quantity == 0;
     }
 
     public ObjectId getId() {
@@ -43,6 +47,8 @@ public class Inventory {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        this.lowStock = this.quantity >= this.reorderThreshold;
+        this.outOfStock = this.quantity == 0;
     }
 
     public String getLocation() {
@@ -69,6 +75,14 @@ public class Inventory {
         this.reorderQuantity = reorderQuantity;
     }
 
+    public boolean isLowStock() {
+        return lowStock;
+    }
+
+    public boolean isOutOfStock() {
+        return outOfStock;
+    }
+
     @Override
     public String toString() {
         return "Inventory{" +
@@ -78,6 +92,7 @@ public class Inventory {
                 ", location='" + location + '\'' +
                 ", reorderThreshold=" + reorderThreshold +
                 ", reorderQuantity=" + reorderQuantity +
+                ", lowStock=" + lowStock +
                 '}';
     }
 }

@@ -5,7 +5,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import inventoryManagement.dao.entities.User;
-import inventoryManagement.dao.entities.UserRole;
+import inventoryManagement.dao.entities.enums.UserRole;
 import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 

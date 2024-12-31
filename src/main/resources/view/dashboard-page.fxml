@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewControler.DashboardPageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.DashboardPageController">
    <children>
       <Pane layoutX="136.0" prefHeight="400.0" prefWidth="655.0" styleClass="root-class" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
          <children>

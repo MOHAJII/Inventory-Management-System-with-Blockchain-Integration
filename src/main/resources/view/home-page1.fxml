@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.HomePageController">
+<!--   <children>-->
+<!--      <Pane layoutX="136.0" prefHeight="400.0" prefWidth="655.0" styleClass="root-class" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">-->
+<!--         <children>-->
+<!--            <BarChart fx:id="inventoryBarChat" layoutX="14.0" layoutY="14.0" prefHeight="150.0" prefWidth="340.0">-->
+<!--              <xAxis>-->
+<!--                <CategoryAxis side="BOTTOM" />-->
+<!--              </xAxis>-->
+<!--              <yAxis>-->
+<!--                <NumberAxis side="LEFT" />-->
+<!--              </yAxis>-->
+<!--            </BarChart>-->
+<!--            <TableView fx:id="productView" layoutX="29.0" layoutY="164.0" prefHeight="225.0" prefWidth="597.0" styleClass="text-field">-->
+<!--              <columns>-->
+<!--                <TableColumn fx:id="nameColumn" prefWidth="121.0" text="Nom Prod" />-->
+<!--                <TableColumn fx:id="priceColumn" text="Prix" />-->
+<!--                  <TableColumn fx:id="upcCodeColumn" prefWidth="117.0" text="UPCCode" />-->
+<!--                  <TableColumn fx:id="categoryColumn" prefWidth="105.0" text="Categorie" />-->
+<!--                  <TableColumn fx:id="wholeSalePriceColumn" prefWidth="172.0" text="Whole saler price" />-->
+<!--              </columns>-->
+<!--            </TableView>-->
+<!--         </children>-->
+<!--      </Pane>-->
+<!--      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="137.0" styleClass="footer" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">-->
+<!--         <children>-->
+<!--            <VBox layoutX="4.0" layoutY="110.0" prefHeight="259.0" prefWidth="128.0" spacing="10.0">-->
+<!--               <children>-->
+<!--                  <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="28.0" prefWidth="128.0" styleClass="alert-button" text="Home">-->
+<!--                     <cursor>-->
+<!--                        <Cursor fx:constant="HAND" />-->
+<!--                     </cursor>-->
+<!--                  </Button>-->
+<!--                  <Button fx:id="inventoryButton" mnemonicParsing="false" onAction="#openInventory" prefHeight="28.0" prefWidth="130.0" styleClass="alert-button" text="Inventory">-->
+<!--                     <cursor>-->
+<!--                        <Cursor fx:constant="HAND" />-->
+<!--                     </cursor>-->
+<!--                  </Button>-->
+<!--                  <Button fx:id="supplierButton" mnemonicParsing="false" onAction="#openSupplier" prefHeight="28.0" prefWidth="128.0" styleClass="alert-button" text="Suppliers">-->
+<!--                     <cursor>-->
+<!--                        <Cursor fx:constant="HAND" />-->
+<!--                     </cursor>-->
+<!--                  </Button>-->
+<!--                  <Button fx:id="userButton" mnemonicParsing="false" onAction="#openUser" prefHeight="28.0" prefWidth="128.0" styleClass="alert-button" text="Users">-->
+<!--                     <cursor>-->
+<!--                        <Cursor fx:constant="HAND" />-->
+<!--                     </cursor>-->
+<!--                  </Button>-->
+<!--                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#openSetting" prefHeight="28.0" prefWidth="128.0" styleClass="alert-button" text="Settings">-->
+<!--                     <cursor>-->
+<!--                        <Cursor fx:constant="HAND" />-->
+<!--                     </cursor>-->
+<!--                  </Button>-->
+<!--               </children>-->
+<!--            </VBox>-->
+<!--            <Button layoutX="7.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="119.0" styleClass="linear-grad" text="Dashboard" textAlignment="CENTER" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="15.0" />-->
+<!--               </font>-->
+<!--            </Button>-->
+<!--         </children>-->
+<!--      </Pane>-->
+<!--   </children>-->
+<!--   <stylesheets>-->
+<!--      <URL value="@inventory.css" />-->
+<!--      <URL value="@style.css" />-->
+<!--   </stylesheets>-->
+</AnchorPane>

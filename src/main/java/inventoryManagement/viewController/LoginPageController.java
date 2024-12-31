@@ -1,4 +1,4 @@
-package inventoryManagement.viewControler;
+package inventoryManagement.viewController;
 
 import inventoryManagement.service.LoginService;
 import javafx.animation.*;
@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -30,7 +31,6 @@ public class LoginPageController {
 
     @FXML
     private TextField userNameField;
-
 
 
     public void onSignIn(Event event) throws IOException {

@@ -18,7 +18,7 @@ module inventoryMangement{
     exports inventoryManagement;
     exports inventoryManagement.dao;
     exports inventoryManagement.dao.entities;
-    opens inventoryManagement.viewControler to javafx.fxml;
+    opens inventoryManagement.viewController to javafx.fxml;
     exports inventoryManagement.test.testDAO;
     exports inventoryManagement.dao.entities.enums;
 

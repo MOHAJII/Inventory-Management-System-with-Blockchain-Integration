@@ -112,16 +112,26 @@ public class TestUserDAO {
         System.out.println("Validate password");
         // user saved with MP : 1234
         User user = new User(
-                "fouad",
+                "mohammed",
                 "1234",
-                UserRole.INVENTORY_MANAGER,
+                UserRole.ADMIN,
                 "warehouse.keeper@example.com"
         );
-//        ObjectId save = userDAO.save(user);
-//        System.out.println("User Id : " + save);
-//        System.out.println(userDAO.validatePassword("fouad", "1234"));
-        System.out.println("isExists");
-        System.out.println(userDAO.existsByUserName(user.getUserName()));
-    }
+        User user1 = new User(
+                "omar",
+                "1234",
+                UserRole.PRODUCT_MANAGER,
+                "warehouse.keeper@example.com"
+        );
+        User user2 = new User(
+                "faissal",
+                "1234",
+                UserRole.GUEST,
+                "warehouse.keeper@example.com"
+        );
+       userDAO.save(user);
+       userDAO.save(user1);
+      userDAO.save(user2);
+         }
 
 }

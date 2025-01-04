@@ -1,6 +1,10 @@
 package inventoryManagement.viewController;
 
+import inventoryManagement.dao.entities.User;
 import inventoryManagement.service.LoginService;
+import inventoryManagement.service.SessionManager;
+import inventoryManagement.service.UserService;
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -17,6 +21,10 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class LoginPageController {
+
+    private final SessionManager sessionManager;
+    private final UserService userService;
+
     @FXML
     private Label errorLabel;
 
@@ -32,6 +40,12 @@ public class LoginPageController {
     @FXML
     private TextField userNameField;
 
+    public LoginPageController() {
+        Dotenv dotenv = Dotenv.load();
+        String REDIS_URI = dotenv.get("REDIS_URI");
+        this.sessionManager = new SessionManager(REDIS_URI, 3600);
+        userService = new UserService();
+    }
 
     public void onSignIn(Event event) throws IOException {
         String userName = userNameField.getText();
@@ -40,19 +54,31 @@ public class LoginPageController {
 
         if (!userName.isEmpty() && !password.isEmpty()) {
             if (loginService.isExist(userName) && loginService.isLogin(userName, password)) {
-                Node node = (Node) event.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/home-page.fxml"));
-                Scene newScene = new Scene(fxmlLoader.load(), 900, 500);
-                stage.setScene(newScene);
+                User user = userService.getByUsername(userName);
+                String sessionId = sessionManager.createSession(user);
+                System.out.println(sessionId);
+                redirectToHomePage(sessionId);
             } else if (!loginService.isExist(userName)) {
                 displayErrorWithStyle("User Not found");
             } else displayErrorWithStyle("Password incorrect");
         } else {
             displayErrorWithStyle("User name and password is required");
         }
+    }
 
+    private void redirectToHomePage(String sessionId) {
+        try {
+            Stage stage = (Stage) userNameField.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/home-page.fxml"));
+            Scene newScene = new Scene(fxmlLoader.load(), 900, 500);
 
+            HomePageController homePageController = fxmlLoader.getController();
+            homePageController.setSessionId(sessionId);
+
+            stage.setScene(newScene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void displayErrorWithStyle(String message) {

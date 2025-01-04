@@ -20,7 +20,7 @@
          <children>
             <Label alignment="CENTER" prefHeight="80.0" prefWidth="476.0" text="INVENTORY MANAGEMENT" textFill="WHITE">
                <font>
-                  <Font name="DejaVu Serif Condensed Bold" size="20.0" />
+                  <Font name="Cantarell Bold" size="20.0" />
                </font>
                <styleClass>
                   <String fx:value="shadow" />
@@ -52,22 +52,25 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <HBox fx:id="dashboardBtn1" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="263.0" spacing="20.0">
+            <HBox fx:id="dashboardBtn1" alignment="CENTER" prefHeight="64.0" prefWidth="263.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="42.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
                      <image>
                         <Image url="@images/dashWhite.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="shadow" text="Dashboard" textFill="WHITE">
+                  <Label alignment="CENTER" styleClass="shadow" text="Dashboard" textFill="WHITE">
                      <font>
-                        <Font name="DejaVu Serif Condensed" size="20.0" />
+                        <Font name="Cantarell Regular" size="22.0" />
                      </font>
                   </Label>
                </children>
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
             </HBox>
             <VBox alignment="CENTER" prefHeight="350.0" prefWidth="195.0">
                <children>
@@ -88,7 +91,7 @@
                               </ImageView>
                               <Label alignment="CENTER" styleClass="shadow" text="Dashboard" textFill="WHITE">
                                  <font>
-                                    <Font name="DejaVu Serif Condensed" size="18.0" />
+                                    <Font name="Cantarell Regular" size="22.0" />
                                  </font>
                               </Label>
                            </children>
@@ -115,7 +118,7 @@
                               </ImageView>
                               <Label alignment="CENTER" styleClass="shadow" text="Items" textFill="WHITE">
                                  <font>
-                                    <Font name="DejaVu Serif Condensed" size="18.0" />
+                                    <Font name="Cantarell Regular" size="22.0" />
                                  </font>
                               </Label>
                            </children>
@@ -140,9 +143,9 @@
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <Label alignment="CENTER" styleClass="shadow" text="Inventories" textFill="WHITE">
+                              <Label alignment="CENTER" styleClass="shadow" text="Inventory" textFill="WHITE">
                                  <font>
-                                    <Font name="DejaVu Serif Condensed" size="18.0" />
+                                    <Font name="Cantarell Regular" size="22.0" />
                                  </font>
                               </Label>
                            </children>
@@ -169,7 +172,7 @@
                               </ImageView>
                               <Label alignment="CENTER" styleClass="shadow" text="History" textFill="WHITE">
                                  <font>
-                                    <Font name="DejaVu Serif Condensed" size="18.0" />
+                                    <Font name="Cantarell Regular" size="22.0" />
                                  </font>
                               </Label>
                            </children>
@@ -194,9 +197,9 @@
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <Label alignment="CENTER" styleClass="shadow" text="Setting" textFill="WHITE">
+                              <Label alignment="CENTER" styleClass="shadow" text="Settings" textFill="WHITE">
                                  <font>
-                                    <Font name="DejaVu Serif Condensed" size="18.0" />
+                                    <Font name="Cantarell Regular" size="22.0" />
                                  </font>
                               </Label>
                            </children>

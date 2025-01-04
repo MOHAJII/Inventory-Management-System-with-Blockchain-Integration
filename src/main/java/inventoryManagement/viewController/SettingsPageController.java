@@ -1,4 +1,4 @@
 package inventoryManagement.viewController;
 
-public class SettingPageController {
+public class SettingsPageController {
 }

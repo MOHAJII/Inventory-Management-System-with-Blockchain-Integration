@@ -3,19 +3,14 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -220,87 +215,10 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="contentArea" prefHeight="464.0" prefWidth="622.0">
-         <children>
-            <VBox prefHeight="490.0" prefWidth="733.0" styleClass="container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container">
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0" spacing="20.0" styleClass="container" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Total In Stock" textFill="WHITE">
-                                 <font>
-                                    <Font name="DejaVu Serif Condensed Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="totalStock" text="1000" textFill="WHITE">
-                                 <font>
-                                    <Font name="DejaVu Serif Condensed Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" top="10.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0" spacing="20.0" styleClass="container" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Turnover" textFill="WHITE">
-                                 <font>
-                                    <Font name="DejaVu Serif Condensed Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="turnOver" text="1000" textFill="WHITE">
-                                 <font>
-                                    <Font name="DejaVu Serif Condensed Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" top="10.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <BarChart fx:id="inventoryBarChat" prefHeight="325.0" prefWidth="412.0" styleClass="container">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                           <HBox.margin>
-                              <Insets bottom="20.0" left="20.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </BarChart>
-                        <TableView fx:id="productView" prefHeight="355.0" prefWidth="408.0" stylesheets="@style.css">
-                          <columns>
-                            <TableColumn fx:id="nameColumn" editable="false" prefWidth="191.0" resizable="false" sortable="false" text="           Product Name" />
-                            <TableColumn fx:id="priceColumn" editable="false" minWidth="0.0" prefWidth="157.0" resizable="false" sortable="false" text="        Price" />
-                          </columns>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TableView>
-                     </children>
-                  </HBox>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
-         </children>
+      <StackPane fx:id="contentArea" prefHeight="421.0" prefWidth="692.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
          </BorderPane.margin>
-      </AnchorPane>
+      </StackPane>
    </center>
 </BorderPane>

@@ -52,7 +52,7 @@ public class HomePageController implements Initializable {
 
     public void openProductPage(Event event) throws IOException {
         if (getUserRole().equals(UserRole.PRODUCT_MANAGER.toString()) || getUserRole().equals(UserRole.ADMIN.toString())) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/product-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/products-page.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
             contentArea.getChildren().setAll(anchorPane);
         } else {

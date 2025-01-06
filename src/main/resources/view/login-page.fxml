@@ -8,58 +8,48 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@inventory.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.LoginPageController">
    <children>
-      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="301.0" styleClass="footer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="212.0" prefHeight="400.0" prefWidth="488.0" styleClass="root-class" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="301.0" styleClass="gradient-background" stylesheets="@style1.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="212.0" prefHeight="400.0" prefWidth="488.0" style="-fx-background-color: white;" styleClass="root-class" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="113.0" layoutY="57.0" prefHeight="287.0" prefWidth="262.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="113.0" AnchorPane.topAnchor="57.0">
+            <StackPane prefHeight="400.0" prefWidth="488.0" />
+            <Pane layoutX="134.0" layoutY="63.0" prefHeight="295.0" prefWidth="241.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="113.0" AnchorPane.topAnchor="63.0">
                <children>
-                  <Label layoutX="89.0" layoutY="20.0" text="User Name" textFill="#0a0000">
+                  <Label layoutX="89.0" layoutY="20.0" styleClass="shadow" text="User Name" textFill="#0a0000">
+                     <font>
+                        <Font name="Cantarell Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="userNameField" layoutX="24.0" layoutY="46.0" prefHeight="30.0" prefWidth="213.0" promptText="Enter user name" styleClass="shadow" />
+                  <Label layoutX="90.0" layoutY="93.0" styleClass="shadow" text="Password" textFill="#030100">
                      <font>
                         <Font size="15.0" />
                      </font>
+                  </Label>
+                  <Button fx:id="signInButton" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="192.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="30.0" prefWidth="120.0" stylesheets="@style1.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Liberation Mono Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                      <styleClass>
-                        <String fx:value="label" />
-                        <String fx:value="roboto" />
+                        <String fx:value="gradient-background" />
+                        <String fx:value="shadow" />
                      </styleClass>
-                  </Label>
-                  <TextField fx:id="userNameField" layoutX="24.0" layoutY="46.0" prefHeight="30.0" prefWidth="213.0" promptText="Enter user name">
-                     <font>
-                        <Font name="Liberation Mono" size="13.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="95.0" layoutY="93.0" styleClass="roboto" text="Password" textFill="#030100">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="signInButton" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="192.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="30.0" prefWidth="120.0" styleClass="tooltip" text="Sign in" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Liberation Mono Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="235.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="tooltip" text="Sign up" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Liberation Mono Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                   </Button>
                   <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-52.0" layoutY="156.0" prefHeight="30.0" prefWidth="364.0" textAlignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Liberation Mono" size="15.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwordField" layoutX="25.0" layoutY="120.0" prefHeight="30.0" prefWidth="213.0" promptText="Enter password">
+                  <PasswordField fx:id="passwordField" layoutX="25.0" layoutY="120.0" prefHeight="30.0" prefWidth="213.0" promptText="Enter password" styleClass="shadow">
                      <font>
-                        <Font name="Liberation Mono" size="13.0" />
+                        <Font name="Cantarell Bold" size="13.0" />
                      </font>
                   </PasswordField>
                </children>

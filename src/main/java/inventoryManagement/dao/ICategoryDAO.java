@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ICategoryDAO implements CategoryDAO {
@@ -47,5 +48,10 @@ public class ICategoryDAO implements CategoryDAO {
             categories.add(cursor.next());
         }
         return categories;
+    }
+
+    @Override
+    public Optional<Category> getByName(String categoryName) {
+        return Optional.ofNullable(getCollection().find(Filters.eq("name", categoryName)).first());
     }
 }

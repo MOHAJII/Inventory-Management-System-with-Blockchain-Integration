@@ -21,4 +21,15 @@ public class ProductService {
     public void save(Product product) {
         productDAO.save(product);
     }
+
+    public Optional<Product> update(Product product) {
+        return productDAO.update(product);
+    }
+
+    public void delete(Product product) {
+        productDAO.deleteById(product.getId());
+    }
+
+
+
 }

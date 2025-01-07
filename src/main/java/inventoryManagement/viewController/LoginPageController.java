@@ -70,7 +70,7 @@ public class LoginPageController {
         try {
             Stage stage = (Stage) userNameField.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/home-page.fxml"));
-            Scene newScene = new Scene(fxmlLoader.load(), 900, 500);
+            Scene newScene = new Scene(fxmlLoader.load(), 1024, 600);
 
             HomePageController homePageController = fxmlLoader.getController();
             homePageController.setSessionId(sessionId);

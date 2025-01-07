@@ -36,6 +36,9 @@ public class HomePageController implements Initializable {
     private ButtonBar dashboardBtn, historyBtn, settingBtn;
 
     @FXML
+    private Label userCredentials;
+
+    @FXML
     private StackPane contentArea;
 
     public HomePageController() {
@@ -118,6 +121,9 @@ public class HomePageController implements Initializable {
     }
 
     public void setSessionId(String sessionId) {
+
         this.sessionId = sessionId;
+        String userName = sessionManager.getSession(this.sessionId).get("userName");
+        userCredentials.setText(userName);
     }
 }

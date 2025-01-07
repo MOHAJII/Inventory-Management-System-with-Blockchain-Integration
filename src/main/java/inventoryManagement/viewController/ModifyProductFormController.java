@@ -18,21 +18,46 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class AddProductFormController implements Initializable {
+public class ModifyProductFormController implements Initializable {
+    private Product product;
     private final ProductService productService = new ProductService();
     private final CategoryService categoryService = new CategoryService();
 
     @FXML
-    private Button addProductBtn, cancelBtn;
-
-    @FXML
-    private TextField descriptionInput, nameInput, priceInput, upcCodeInput, wholeSaleInput;
+    private Button modifyProductBtn, cancelBtn;
 
     @FXML
     private ComboBox<String> categoryComboBox;
 
     @FXML
-    private void handleAddProduct() {
+    private TextField descriptionInput, nameInput, priceInput, upcCodeInput, wholeSaleInput;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<Category> categoryList = categoryService.getAll();
+        categoryList.forEach(category -> {
+            categoryComboBox.getItems().add(category.getName());
+        });
+    }
+
+    private void addProductToForm() {
+        System.out.println(product);
+        if (product != null) {
+            descriptionInput.setText(product.getDescription());
+            nameInput.setText(product.getName());
+            priceInput.setText(String.valueOf(product.getPrice()));
+            upcCodeInput.setText(product.getUPCCode());
+            wholeSaleInput.setText(String.valueOf(product.getWholeSalePrice()));
+        }
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        addProductToForm();
+    }
+
+    @FXML
+    public void handleModifyProduct() {
         String name = nameInput.getText();
         String category = categoryComboBox.getSelectionModel().getSelectedItem();
         String description = descriptionInput.getText();
@@ -47,28 +72,21 @@ public class AddProductFormController implements Initializable {
                 Optional<Category> category1 = categoryService.getCategoryByName(category);
                 ObjectId categoryId = category1.map(Category::getId).orElse(null);
                 Product newProduct = new Product(upcCode, description, name, categoryId, null, priceDouble, wholeSaleDouble);
-                productService.save(newProduct);
-                Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Product added successfully!");
-                ((Stage) addProductBtn.getScene().getWindow()).close();
+                newProduct.setId(product.getId());
+                productService.update(newProduct);
+                Utils.showNotification((Stage) modifyProductBtn.getScene().getWindow(), "Product modified successfully");
+                ((Stage) modifyProductBtn.getScene().getWindow()).close();
             }catch (NumberFormatException e) {
-                Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Invalid price format");
+                Utils.showNotification((Stage) modifyProductBtn.getScene().getWindow(), "Invalid price format");
             }
         } else {
-            Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "All fields required");
+            Utils.showNotification((Stage) modifyProductBtn.getScene().getWindow(), "All fields required");
         }
     }
 
     @FXML
     public void handleCancel() {
-        Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Cancel");
+        Utils.showNotification((Stage) modifyProductBtn.getScene().getWindow(), "Cancel");
         ((Stage) cancelBtn.getScene().getWindow()).close();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Category> categoryList = categoryService.getAll();
-        categoryList.forEach(category -> {
-            categoryComboBox.getItems().add(category.getName());
-        });
     }
 }

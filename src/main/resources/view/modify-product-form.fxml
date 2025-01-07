@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="container" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.AddProductFormController">
+<AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="container" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.ModifyProductFormController">
    <children>
       <VBox layoutY="-5.0" prefHeight="400.0" prefWidth="447.0" styleClass="container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="59.0" prefWidth="447.0">
                <children>
-                  <Label text="Add new product">
+                  <Label text="Update product">
                      <font>
                         <Font name="Cantarell Regular" size="30.0" />
                      </font>
@@ -138,10 +138,10 @@
                            </padding>
                         </HBox>
                         <ButtonBar prefHeight="40.0" prefWidth="200.0">
-                          <buttons>
-                            <Button fx:id="addProductBtn" mnemonicParsing="false" onAction="#handleAddProduct" text="Add" />
+                           <buttons>
+                              <Button fx:id="modifyProductBtn" mnemonicParsing="false" onAction="#handleModifyProduct" text="Modify" />
                               <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                          </buttons>
+                           </buttons>
                            <VBox.margin>
                               <Insets right="20.0" />
                            </VBox.margin>

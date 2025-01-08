@@ -4,12 +4,38 @@ import inventoryManagement.dao.IInventoryDAO;
 import inventoryManagement.dao.IProductDAO;
 import inventoryManagement.dao.entities.Inventory;
 import inventoryManagement.dao.entities.Product;
+import org.bson.types.ObjectId;
 
 import java.util.*;
 
 public class InventoryService {
     IInventoryDAO inventoryDAO = new IInventoryDAO();
     ProductService productService = new ProductService();
+
+    public List<Inventory> getAll() {
+        return inventoryDAO.getAll();
+    }
+
+    public Optional<Inventory> getById(ObjectId id) {
+        return inventoryDAO.getById(id);
+    }
+
+    public void save(Inventory inventory) {
+        inventoryDAO.save(inventory);
+    }
+
+    public Optional<Inventory> update(Inventory inventory) {
+        return inventoryDAO.update(inventory);
+    }
+
+    public void delete(Inventory inventory) {
+        inventoryDAO.deleteById(inventory.getId());
+    }
+
+
+
+
+
     public double getAllInventories() {
         List<Inventory> inventories = inventoryDAO.getAll();
         double totalInventories = 0.0;

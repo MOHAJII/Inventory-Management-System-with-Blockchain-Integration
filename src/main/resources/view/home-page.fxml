@@ -40,12 +40,12 @@
                   <Insets left="20.0" right="20.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <ImageView fitHeight="63.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="63.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
                      <image>
                         <Image url="@images/profile.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="userCredentials" text="Mohammed Haji" textFill="WHITE">
+                  <Label fx:id="userCredentials" styleClass="shadow" text="Mohammed Haji" textFill="WHITE">
                      <font>
                         <Font name="Cantarell Bold" size="20.0" />
                      </font>
@@ -227,7 +227,7 @@
       </VBox>
    </left>
    <center>
-      <StackPane fx:id="contentArea" prefHeight="421.0" prefWidth="692.0" styleClass="container" BorderPane.alignment="CENTER">
+      <StackPane fx:id="contentArea" prefHeight="421.0" prefWidth="692.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
          </BorderPane.margin>

@@ -16,8 +16,10 @@ import java.util.Optional;
 public class IUserDAO implements UserDAO {
     @Override
     public MongoCollection<User> getCollection() {
-        MongoDatabase database = DBConnection.getDatabase();
-        return database.getCollection("users", User.class);
+        DBConnection dbConnection = DBConnection.getInstance();
+        assert dbConnection != null;
+        MongoDatabase mongoDatabase = dbConnection.getDatabase("inventoryManagement");
+        return mongoDatabase.getCollection("users", User.class);
     }
 
     @Override

@@ -15,9 +15,9 @@
 
 <AnchorPane fx:id="contentArea" prefHeight="464.0" prefWidth="622.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.DashboardController">
    <children>
-      <VBox prefHeight="490.0" prefWidth="733.0" styleClass="container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="490.0" prefWidth="733.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0" spacing="20.0" styleClass="container" HBox.hgrow="ALWAYS">
                      <children>
@@ -88,7 +88,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                      <children>
-                        <TableView fx:id="productView" layoutX="7.0" layoutY="26.0" prefHeight="285.0" prefWidth="235.0" style="-fx-background-image: transparent;" stylesheets="@style.css">
+                        <TableView fx:id="productView" layoutX="7.0" layoutY="26.0" prefHeight="285.0" prefWidth="235.0" style="-fx-background-image: transparent;" stylesheets="@style1.css">
                            <columns>
                               <TableColumn fx:id="nameColumn" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="Product Name" />
                               <TableColumn fx:id="priceColumn" editable="false" minWidth="0.0" prefWidth="228.0" resizable="false" sortable="false" text="        Price" />

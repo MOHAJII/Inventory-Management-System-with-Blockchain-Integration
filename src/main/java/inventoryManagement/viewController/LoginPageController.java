@@ -24,33 +24,28 @@ public class LoginPageController {
 
     private final SessionManager sessionManager;
     private final UserService userService;
+    private final LoginService loginService;
 
     @FXML
     private Label errorLabel;
 
     @FXML
-    private TextField passwordField;
+    private TextField passwordField, userNameField;
 
     @FXML
-    private Button signInButton;
-
-    @FXML
-    private Button signUpButton;
-
-    @FXML
-    private TextField userNameField;
+    private Button signInButton, signUpButton;
 
     public LoginPageController() {
         Dotenv dotenv = Dotenv.load();
         String REDIS_URI = dotenv.get("REDIS_URI");
         this.sessionManager = new SessionManager(REDIS_URI, 3600);
-        userService = new UserService();
+        this.userService = new UserService();
+        this.loginService = new LoginService();
     }
 
     public void onSignIn(Event event) throws IOException {
         String userName = userNameField.getText();
         String password = passwordField.getText();
-        LoginService loginService = new LoginService();
 
         if (!userName.isEmpty() && !password.isEmpty()) {
             if (loginService.isExist(userName) && loginService.isLogin(userName, password)) {
@@ -70,7 +65,7 @@ public class LoginPageController {
         try {
             Stage stage = (Stage) userNameField.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/home-page.fxml"));
-            Scene newScene = new Scene(fxmlLoader.load(), 1024, 600);
+            Scene newScene = new Scene(fxmlLoader.load());
 
             HomePageController homePageController = fxmlLoader.getController();
             homePageController.setSessionId(sessionId);

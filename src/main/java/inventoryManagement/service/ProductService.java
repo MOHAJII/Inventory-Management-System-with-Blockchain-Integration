@@ -30,6 +30,10 @@ public class ProductService {
         productDAO.deleteById(product.getId());
     }
 
+    public Optional<Product> getByName(String name) {
+        return productDAO.getByName(name);
+    }
+
 
 
 }

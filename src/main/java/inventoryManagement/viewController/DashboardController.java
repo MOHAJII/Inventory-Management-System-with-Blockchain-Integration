@@ -1,8 +1,10 @@
 package inventoryManagement.viewController;
 
+import inventoryManagement.dao.entities.Inventory;
 import inventoryManagement.dao.entities.Product;
 import inventoryManagement.service.InventoryService;
 import inventoryManagement.service.ProductService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,16 +15,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.bson.types.ObjectId;
 
 import java.net.URL;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
 
-    private ObservableList<Product> productObservableList = FXCollections.observableArrayList();
-    private ProductService productService;
-    private InventoryService inventoryService;
+    private ObservableList<Inventory> inventoryObservableList = FXCollections.observableArrayList();
+    private final ProductService productService;
+    private final InventoryService inventoryService;
 
     @FXML
     private Label turnOver, totalStock;
@@ -31,24 +35,33 @@ public class DashboardController implements Initializable {
     private BarChart<String, Double> inventoryBarChat;
 
     @FXML
-    private TableColumn<Product, String> nameColumn;
+    private TableColumn<Inventory, String> nameCol;
 
     @FXML
-    private TableColumn<Product, Double> priceColumn;
+    private TableColumn<Inventory, Double> productStockCol;
 
     @FXML
-    private TableView<Product> productView;
+    private TableView<Inventory> productView;
+
+    public DashboardController() {
+        productService = new ProductService();
+        inventoryService = new InventoryService();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        productService = new ProductService();
-        inventoryService = new InventoryService();
+        turnOver.setText(Double.toString(inventoryService.getTotalAmount()));
+        totalStock.setText(Double.toString(inventoryService.getAllInventories()));
+        inventoryObservableList.addAll(inventoryService.getAll());
+        nameCol.setCellValueFactory(cellData -> {
+            ObjectId productId = cellData.getValue().getProductId();
+            Optional<Product> product = productService.getById(productId);
+            String productName = product.map(Product::getName).orElse("Unknown Product");
+            return new SimpleStringProperty(productName);
+        });
+        productStockCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
-        productObservableList.addAll(productService.getAll());
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-
-        productView.setItems(productObservableList);
+        productView.setItems(inventoryObservableList);
         inventoryBarChartInitializer();
     }
 

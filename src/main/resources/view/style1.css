@@ -3,7 +3,7 @@
 }
 
 .line-color {
-    -fx-background-color: #F3ABB5
+    -fx-background-color: #FFF
 }
 
 .container {
@@ -29,6 +29,22 @@
     -fx-pref-height: 10px!important;
 }
 
+.deleteBtn {
+    -fx-background-color: darkRed;
+    -fx-padding: 10px 20px;         /* Padding */
+    -fx-border-radius: 5px;         /* Rounded corners */
+    -fx-background-radius: 5px;
+}
+
+.updateBtn {
+    -fx-background-color: darkGreen;
+    -fx-opacity: 70%;
+    -fx-border-color: darkGreen;
+    -fx-padding: 10px 20px;         /* Padding */
+    -fx-border-radius: 5px;         /* Rounded corners */
+    -fx-background-radius: 5px;
+}
+
 .button:hover {
     -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1E3A8B, #60A5F0);
     -fx-opacity: 80%;
@@ -38,11 +54,13 @@
     -fx-opacity: 50%; /* Even darker green when pressed */
 }
 
-
+.transparent {
+    -fx-background-color: transparent;
+}
 
 /* Custom table view */
 .table-view {
-    -fx-background-color: transparent; /* Transparent table background */
+    -fx-background-color: transparent; /* White table background */
 }
 
 .table-view .column-header,
@@ -54,49 +72,19 @@
     -fx-text-fill: #4A4A4A; /* Dark gray text for better contrast */
     -fx-font-weight: bold;
     -fx-font-size: 16px; /* Increased font size for headers */
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: center-left;
 }
 
 .table-view .cell {
     -fx-cell-size: 35;
     -fx-alignment: center-left;
-    -fx-background-color: transparent; /* Transparent cells */
+    -fx-background-color: white; /* Default cell background */
     -fx-border-color: #D3D3D3; /* Light gray borders */
-    -fx-text-fill: #FFFFFF; /* White text for readability against red background */
+    -fx-text-fill: #000000; /* Black text */
     -fx-font-size: 14px; /* Increased font size for cell text */
-    -fx-alignment: CENTER_LEFT;
 }
 
-.table-row-cell:selected {
-    -fx-background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white for selection */
-    -fx-text-fill: #FF0000; /* Red text when selected */
-}
 
-/* Scrollbar styling */
-
-/* Increment and decrement button CSS class of scrollbar */
-.table-view .increment-button,
-.table-view .decrement-button {
-    -fx-background-color: transparent;
-    -fx-background-radius: 2em;
-}
-
-/* Main scrollbar **track** CSS class */
-.table-view .scroll-bar:horizontal .track,
-.table-view .scroll-bar:vertical .track {
-    -fx-background-color: rgba(255, 255, 255, 0.3); /* Transparent white for track */
-    -fx-border-color: #FFFFFF; /* White border for visibility */
-    -fx-background-radius: 2em;
-    -fx-border-radius: 2em;
-}
-
-/* Main scrollbar **thumb** CSS class */
-.table-view .scroll-bar:horizontal .thumb,
-.table-view .scroll-bar:vertical .thumb {
-    -fx-background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for thumb */
-    -fx-background-insets: 2, 0, 0;
-    -fx-background-radius: 2em;
-}
 
 /* Chart properties */
 
@@ -114,4 +102,30 @@
     -fx-border-color: derive(-fx-pie-color, 1%);
     -fx-border-width: 0px;
 }
+
+/* Styling for the TextField */
+.text-field {
+    -fx-background-color: #ffffff; /* White background for the input */
+    -fx-text-fill: #333; /* Dark gray text for contrast */
+    -fx-border-color: #007bff; /* Blue border matching the theme */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-background-radius: 5px; /* Match border radius */
+    -fx-padding: 10px; /* Comfortable padding */
+    -fx-font-size: 16px; /* Readable font size */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0.2, 0, 2); /* Subtle shadow effect */
+}
+
+/* Placeholder text styling */
+.text-field:focused {
+    -fx-border-color: darkBlue; /* White border on focus */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.4), 4, 0.4, 0, 2); /* Highlighted glow effect */
+}
+
+/* Disabled state styling */
+.text-field:disabled {
+    -fx-background-color: #cccccc; /* Light gray background */
+    -fx-border-color: #666666; /* Muted border color */
+    -fx-text-fill: #777777; /* Dimmed text color */
+}
+
 

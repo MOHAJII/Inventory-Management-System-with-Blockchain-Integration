@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +16,7 @@
 
 <AnchorPane minWidth="-Infinity" prefHeight="432.0" prefWidth="780.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.InventoryPageController">
    <children>
-      <BorderPane layoutX="-7.0" prefHeight="400.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="20.0" layoutY="20.0" prefHeight="412.0" prefWidth="771.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="10.0">
          <top>
             <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="781.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
@@ -37,30 +38,34 @@
             </HBox>
          </top>
          <center>
-            <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="262.0" prefWidth="693.0" spacing="10.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
                </BorderPane.margin>
                <children>
-                  <Button fx:id="addBtn" mnemonicParsing="false" prefHeight="45.0" prefWidth="262.0" styleClass="button1" text="Add">
-                     <font>
-                        <Font name="Cantarell Regular" size="13.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <TableView fx:id="inventoryTable" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="741.0">
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="addBtn" mnemonicParsing="false" onAction="#showAddInventoryForm" prefHeight="45.0" prefWidth="305.0" styleClass="button1" text="Add">
+                           <font>
+                              <Font name="Cantarell Regular" size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="inventoryTable" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="699.0" styleClass="container" stylesheets="@style1.css">
                      <columns>
-                        <TableColumn fx:id="productNameCol" maxWidth="155.0" minWidth="155.0" prefWidth="152.0" resizable="false" text="Product Name" />
-                        <TableColumn fx:id="quantityCol" maxWidth="91.0" minWidth="91.0" prefWidth="91.0" resizable="false" text="Quantity" />
-                        <TableColumn fx:id="locationCol" maxWidth="110.0" prefWidth="106.0" resizable="false" text="Location" />
-                        <TableColumn fx:id="reorderThresholdCol" maxWidth="224.0" prefWidth="194.0" resizable="false" text="Reorder threshold" />
-                        <TableColumn fx:id="reorderQuantityCol" maxWidth="224.0" minWidth="8.0" prefWidth="197.0" resizable="false" text="Reorder Quantity" />
+                        <TableColumn fx:id="productNameCol" maxWidth="166.0" minWidth="130.0" prefWidth="147.0" resizable="false" text="Product Name" />
+                        <TableColumn fx:id="quantityCol" maxWidth="122.0" minWidth="81.0" prefWidth="102.0" resizable="false" text="Quantity" />
+                        <TableColumn fx:id="locationCol" maxWidth="138.0" prefWidth="92.0" resizable="false" text="Location" />
+                        <TableColumn fx:id="reorderThresholdCol" maxWidth="238.0" prefWidth="197.0" resizable="false" text="Reorder threshold" />
+                        <TableColumn fx:id="reorderQuantityCol" maxWidth="264.0" minWidth="8.0" prefWidth="197.0" resizable="false" text="Reorder Quantity" />
                      </columns>
-                     <styleClass>
-                        <String fx:value="container" />
-                        <String fx:value="chart" />
-                     </styleClass>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </TableView>
                </children>
             </VBox>
@@ -68,26 +73,40 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="587.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="deleteBtn" mnemonicParsing="false" styleClass="button1" text="Delete">
+                  <Button fx:id="deleteBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" styleClass="deleteBtn">
                      <font>
                         <Font name="Cantarell Regular" size="13.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="modifyBtn" mnemonicParsing="false" styleClass="button1" text="Modify">
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/deleteRed.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="modifyBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" styleClass="updateBtn">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/updateGreen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <BorderPane.margin>
-                  <Insets right="20.0" />
+                  <Insets right="50.0" />
                </BorderPane.margin>
             </HBox>
          </bottom>
       </BorderPane>
    </children>
    <padding>
-      <Insets bottom="10.0" left="10.0" right="15.0" top="10.0" />
+      <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
    </padding>
 </AnchorPane>

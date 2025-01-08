@@ -14,6 +14,7 @@ public class Product implements Serializable {
     private List<ObjectId> suppliersId;
     private double price;
     private double wholeSalePrice; // The supplier price, how much we get the product
+    private String imageSrc;
 
     public Product() {
     }
@@ -90,6 +91,14 @@ public class Product implements Serializable {
 
     public void setWholeSalePrice(double wholeSalePrice) {
         this.wholeSalePrice = wholeSalePrice;
+    }
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
     }
 
     @Override

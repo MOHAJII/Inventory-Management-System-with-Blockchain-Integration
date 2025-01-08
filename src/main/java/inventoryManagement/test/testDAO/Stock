@@ -1,0 +1,146 @@
+modifyCol.setCellFactory(new Callback<TableColumn<Product, Void>, TableCell<Product, Void>>() {
+            @Override
+            public TableCell<Product, Void> call(TableColumn<Product, Void> param) {
+                return new TableCell<Product, Void>() {
+                    private final Button actionButton = new Button();
+
+                    {
+                        // Ajouter une image au bouton
+                        ImageView imageView = new ImageView(new Image("/view/images/updateGreen.png")); // Chemin de l'image
+                        imageView.setFitWidth(16);
+                        imageView.setFitHeight(16);
+                        actionButton.setGraphic(imageView);
+
+                        // Appliquer un style CSS
+                        actionButton.getStyleClass().add("updateBtn");
+
+                        // Relier le bouton au gestionnaire existant
+                        actionButton.setOnAction(e -> {
+                            Product item = getTableView().getItems().get(getIndex());
+                            try {
+                                handleModifyProduct(item); // Appel de votre méthode existante
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(actionButton);
+                        }
+                    }
+                };
+            }
+        });
+
+
+        ///
+
+        .table-view {
+            -fx-background-color: transparent; /* Transparent table background */
+        }
+
+        .table-view .column-header,
+        .table-view .column-header-background .filler {
+            -fx-background-color: rgba(255, 255, 255, 0.8); /* Light header with transparency */
+        }
+
+        .table-view .column-header .label {
+            -fx-text-fill: #4A4A4A; /* Dark gray text for better contrast */
+            -fx-font-weight: bold;
+            -fx-font-size: 16px; /* Increased font size for headers */
+            -fx-alignment: CENTER_LEFT;
+        }
+
+        .table-view .cell {
+            -fx-cell-size: 35;
+            -fx-alignment: center-left;
+            -fx-background-color: transparent; /* Transparent cells */
+            -fx-border-color: #D3D3D3; /* Light gray borders */
+            -fx-text-fill: #FFFFFF; /* White text for readability against red background */
+            -fx-font-size: 14px; /* Increased font size for cell text */
+            -fx-alignment: CENTER_LEFT;
+        }
+
+        .table-row-cell:selected {
+            -fx-background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white for selection */
+            -fx-text-fill: #FF0000; /* Red text when selected */
+        }
+
+        /* Scrollbar styling */
+
+        /* Increment and decrement button CSS class of scrollbar */
+        .table-view .increment-button,
+        .table-view .decrement-button {
+            -fx-background-color: transparent;
+            -fx-background-radius: 2em;
+        }
+
+        /* Main scrollbar **track** CSS class */
+        .table-view .scroll-bar:horizontal .track,
+        .table-view .scroll-bar:vertical .track {
+            -fx-background-color: rgba(255, 255, 255, 0.3); /* Transparent white for track */
+            -fx-border-color: #FFFFFF; /* White border for visibility */
+            -fx-background-radius: 2em;
+            -fx-border-radius: 2em;
+        }
+
+        /* Main scrollbar **thumb** CSS class */
+        .table-view .scroll-bar:horizontal .thumb,
+        .table-view .scroll-bar:vertical .thumb {
+            -fx-background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for thumb */
+            -fx-background-insets: 2, 0, 0;
+            -fx-background-radius: 2em;
+        }
+
+_________________________________________________________________________________________________________________________________________________---
+
+
+@FXML
+    private void handleModifyInventory() throws IOException {
+        Inventory selectedInventory = inventoryTable.getSelectionModel().getSelectedItem();
+        if (selectedInventory != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/modify-product-form.fxml"));
+            Parent parent = loader.load();
+
+            ModifyProductFormController modifyProductFormController = loader.getController();
+            modifyProductFormController.setProduct(selectedInventory);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Modify Product");
+            stage.setScene(new Scene(parent));
+            stage.showAndWait();
+            products = loadProducts();
+            productTable.setItems(FXCollections.observableList(products));
+        }
+    }
+
+    @FXML
+    public void handleDeleteProduct() {
+        Product selectedInventory = productTable.getSelectionModel().getSelectedItem();
+        if (selectedInventory != null) {
+            boolean confirmed = Utils.showConfirmationAlert(
+                    "Delete Confirmation",
+                    "Are you sure you want to delete this item?",
+                    "This action cannot be undone."
+            );
+            if (confirmed) {
+                productService.delete(selectedInventory);
+                Utils.showNotification((Stage) addBtn.getScene().getWindow(), "Product deleted");
+                products = loadProducts();
+                productTable.setItems(FXCollections.observableList(products));
+            }
+        }
+
+    }
+
+
+_____________________________________________________________________________________________________________________________________________________________________
+
+
+

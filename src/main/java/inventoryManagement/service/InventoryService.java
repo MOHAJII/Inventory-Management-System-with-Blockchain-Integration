@@ -32,10 +32,6 @@ public class InventoryService {
         inventoryDAO.deleteById(inventory.getId());
     }
 
-
-
-
-
     public double getAllInventories() {
         List<Inventory> inventories = inventoryDAO.getAll();
         double totalInventories = 0.0;
@@ -64,7 +60,15 @@ public class InventoryService {
             product.ifPresent(System.out::println);
             product.ifPresent(value -> invPerProduct.put(value.getName(), (double) inventory.getQuantity()));
         }
-
         return invPerProduct;
+    }
+
+    public boolean isExist(Inventory inventory) {
+        Optional<Inventory> inventory1 = inventoryDAO.getByProductId(inventory.getProductId());
+        if (inventory1.isPresent()) {
+            Optional<Inventory> inventory2 = inventoryDAO.getByLocation(inventory.getLocation());
+            return inventory2.isPresent();
+        }
+        return false;
     }
 }

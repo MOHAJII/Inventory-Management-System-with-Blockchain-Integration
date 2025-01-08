@@ -4,18 +4,19 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.ProductsPageController">
+<AnchorPane stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.ProductsPageController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="873.0" stylesheets="@style1.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -50,7 +51,7 @@
             </HBox>
          </top>
          <center>
-            <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
                </BorderPane.margin>
@@ -60,23 +61,15 @@
                         <Button fx:id="addBtn" mnemonicParsing="false" onAction="#showAddProductForm" styleClass="button1" text="Add" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" styleClass="container">
-                     <children>
-                        <TableView fx:id="productTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="291.0" prefWidth="757.0" scaleShape="false" styleClass="container">
-                          <columns>
-                            <TableColumn fx:id="nameCol" maxWidth="126.0" prefWidth="126.0" resizable="false" text="Name" />
-                            <TableColumn fx:id="descriptionCol" maxWidth="214.0" prefWidth="125.0" resizable="false" text="Description" />
-                              <TableColumn fx:id="categorieCol" maxWidth="180.0" minWidth="8.0" prefWidth="121.0" resizable="false" text="Category" />
-                              <TableColumn fx:id="upccodeCol" maxWidth="198.0" prefWidth="117.0" resizable="false" text="UPC Code" />
-                              <TableColumn fx:id="wholesaleCol" maxWidth="340.0" prefWidth="189.0" resizable="false" text="WholeSale Price" />
-                              <TableColumn fx:id="priceCol" maxWidth="254.0" prefWidth="78.0" resizable="false" text="Price" />
-                          </columns>
-                        </TableView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="transparent">
+                     <content>
+                        <GridPane fx:id="productContainer" prefHeight="0.0" prefWidth="0.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
                </children>
             </VBox>
          </center>
@@ -98,12 +91,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="modifyBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleModifyProduct" prefHeight="30.0" prefWidth="38.0" styleClass="updateBtn">
+                  <Button fx:id="modifyBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" styleClass="updateBtn">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="38.0" onDragDetected="#showAddProductForm" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/updateGreen.png" />
                            </image>

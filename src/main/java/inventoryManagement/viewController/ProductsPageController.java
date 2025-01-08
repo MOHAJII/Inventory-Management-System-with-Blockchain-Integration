@@ -12,13 +12,19 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.bson.types.ObjectId;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,13 +43,16 @@ public class ProductsPageController implements Initializable {
     private TableColumn<Product, String> categorieCol, descriptionCol, nameCol, upccodeCol;
 
     @FXML
+    private TableColumn<Product, Void> modifyCol, deleteCol;
+
+    @FXML
     private TableColumn<Product, Double> priceCol, wholesaleCol;
 
     @FXML
     private TableView<Product> productTable;
 
     @FXML
-    private Button modifyBtn, addBtn;
+    private Button modifyBtn, addBtn, deleteBtn;
 
     @FXML
     private TextField searchItemField;
@@ -85,7 +94,6 @@ public class ProductsPageController implements Initializable {
     private void handleModifyProduct() throws IOException {
         Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
-            System.out.println(selectedProduct);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/modify-product-form.fxml"));
             Parent parent = loader.load();
 
@@ -137,6 +145,4 @@ public class ProductsPageController implements Initializable {
         });
         wholesaleCol.setCellValueFactory(new PropertyValueFactory<>("wholeSalePrice"));
     }
-
-
 }

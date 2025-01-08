@@ -11,7 +11,7 @@ public class Inventory {
     private int reorderQuantity; // Suggestion quantity to reorder
     private boolean lowStock = false;
     private boolean outOfStock = false;
-
+    private Integer opening;
     public Inventory() {
     }
 

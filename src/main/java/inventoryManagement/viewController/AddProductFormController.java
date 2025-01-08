@@ -66,6 +66,7 @@ public class AddProductFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        categoryComboBox.getItems().clear();
         List<Category> categoryList = categoryService.getAll();
         categoryList.forEach(category -> {
             categoryComboBox.getItems().add(category.getName());

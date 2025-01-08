@@ -62,6 +62,11 @@ public class IProductDAO implements ProductDAO {
         }
         return products;
     }
+
+    @Override
+    public Optional<Product> getByName(String name) {
+        return Optional.ofNullable(getCollection().find(Filters.eq("name", name)).first());
+    }
 }
 
 

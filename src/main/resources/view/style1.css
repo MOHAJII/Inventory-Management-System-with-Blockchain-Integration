@@ -11,6 +11,10 @@
     -fx-background-radius: 10;
 }
 
+.container1 {
+    -fx-background-radius: 10;
+}
+
 .shadow {
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
 }
@@ -127,5 +131,15 @@
     -fx-border-color: #666666; /* Muted border color */
     -fx-text-fill: #777777; /* Dimmed text color */
 }
+
+.vbox-card {
+    -fx-background-color: darkBlue;
+    -fx-background-radius: 12; /* Rounded corners */
+    -fx-padding: 16; /* Inner spacing */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 6, 0.1, 0, 4); /* Soft shadow */
+    -fx-border-radius: 12; /* Match the background radius */
+    -fx-border-color: transparent; /* Optional border customization */
+}
+
 
 

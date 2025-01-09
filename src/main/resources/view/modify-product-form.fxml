@@ -138,7 +138,7 @@
                         </HBox>
                         <HBox alignment="CENTER" spacing="10.0">
                            <children>
-                              <Button fx:id="modifyProductBtn" mnemonicParsing="false" onAction="#handleModifyProduct" styleClass="button1" text="Modify" />
+                              <Button fx:id="modifyProductBtn" mnemonicParsing="false" onAction="#handleModifyProduct" styleClass="button1" text="Save" />
                               <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancel" styleClass="button1" text="Cancel" />
                            </children>
                            <VBox.margin>

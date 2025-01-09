@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.ProductsPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="880.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.ProductsPageController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="873.0" stylesheets="@style1.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="607.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="TOP_RIGHT" prefHeight="39.0" prefWidth="168.0" styleClass="container" text="Items Page" HBox.hgrow="ALWAYS">
+                  <Label alignment="TOP_RIGHT" prefHeight="49.0" prefWidth="182.0" styleClass="container" text="Status Page" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Cantarell Regular" size="30.0" />
                      </font>
@@ -37,9 +30,6 @@
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
-                     <children>
-                        <TextField fx:id="searchItemField" prefHeight="10.0" promptText="Search for item" HBox.hgrow="ALWAYS" />
-                     </children>
                      <padding>
                         <Insets left="20.0" right="20.0" />
                      </padding>
@@ -56,59 +46,14 @@
                   <Insets left="20.0" right="20.0" top="20.0" />
                </BorderPane.margin>
                <children>
-                  <HBox>
-                     <children>
-                        <Button fx:id="addBtn" mnemonicParsing="false" onAction="#showAddProductForm" styleClass="button1" text="Add" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="transparent">
-                     <content>
-                        <GridPane fx:id="productContainer" prefHeight="0.0" prefWidth="0.0">
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </content>
-                  </ScrollPane>
+                  <HBox />
+                  <WebView fx:id="webView" prefHeight="595.0" prefWidth="820.0" />
                </children>
             </VBox>
          </center>
-         <bottom>
-            <HBox alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="587.0" spacing="10.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="deleteBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDeleteProduct" prefHeight="30.0" prefWidth="38.0" styleClass="deleteBtn">
-                     <font>
-                        <Font name="Cantarell Regular" size="13.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/deleteRed.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="modifyBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" styleClass="updateBtn">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/updateGreen.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <BorderPane.margin>
-                  <Insets right="20.0" />
-               </BorderPane.margin>
-            </HBox>
-         </bottom>
       </BorderPane>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </AnchorPane>

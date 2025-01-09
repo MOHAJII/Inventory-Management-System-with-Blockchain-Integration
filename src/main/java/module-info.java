@@ -1,5 +1,4 @@
 module inventoryMangement{
-    requires javafx.controls;
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
@@ -13,6 +12,7 @@ module inventoryMangement{
     requires redis.clients.jedis;
     requires org.apache.commons.lang3;
     requires java.sql;
+    requires javafx.web;
 
     opens inventoryManagement.service to javafx.fxml;
     exports inventoryManagement;

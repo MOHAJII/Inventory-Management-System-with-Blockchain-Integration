@@ -13,47 +13,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="gradient-background" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.LoginPageController">
    <children>
-      <Pane layoutX="212.0" prefHeight="400.0" prefWidth="491.0" styleClass="gradient-background" AnchorPane.leftAnchor="212.0">
+      <Pane layoutX="212.0" prefHeight="600.0" prefWidth="589.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="212.0">
          <children>
-            <StackPane layoutX="67.0" layoutY="35.0" prefHeight="331.0" prefWidth="357.0">
+            <StackPane layoutX="-2.0" layoutY="-3.0" prefHeight="600.0" prefWidth="595.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" styleClass="container">
+                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label styleClass="shadow" text="User Name" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="userNameField" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="213.0" promptText="Enter user name" styleClass="shadow" />
-                        <Label styleClass="shadow" text="Password" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="213.0" promptText="Enter password" styleClass="shadow">
-                           <font>
-                              <Font name="Cantarell Bold" size="13.0" />
-                           </font>
-                        </PasswordField>
-                        <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="364.0" textAlignment="CENTER" textFill="RED">
-                           <font>
-                              <Font name="Liberation Mono" size="15.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="signInButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSignIn" prefHeight="47.0" prefWidth="147.0" stylesheets="@style1.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="gradient-background" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Button>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="361.0" spacing="10.0" styleClass="container1">
+                           <children>
+                              <Label styleClass="shadow" text="User Name">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userNameField" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="213.0" promptText="Enter user name" styleClass="shadow" />
+                              <Label styleClass="shadow" text="Password">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="213.0" promptText="Enter password" styleClass="shadow">
+                                 <font>
+                                    <Font name="Cantarell Bold" size="13.0" />
+                                 </font>
+                              </PasswordField>
+                              <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="364.0" textAlignment="CENTER" textFill="RED">
+                                 <font>
+                                    <Font name="Liberation Mono" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="signInButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSignIn" prefHeight="47.0" prefWidth="147.0" stylesheets="@style1.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="gradient-background" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                      <padding>
                         <Insets left="50.0" right="50.0" />

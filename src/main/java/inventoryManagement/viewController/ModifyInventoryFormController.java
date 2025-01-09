@@ -14,10 +14,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.types.ObjectId;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Optional;
@@ -29,8 +33,12 @@ public class ModifyInventoryFormController implements Initializable {
     private final InventoryService inventoryService = new InventoryService();
     private final ProductService productService = new ProductService();
     private final TransactionService transactionService = new TransactionService();
+    private String imagePath;
     @FXML
     private Button cancelBtn, decreaseQuantityBtn, increaseQuantityBtn, modifyProductBtn, uploadBtn;
+
+    @FXML
+    private ImageView billImage;
 
     @FXML
     private TextField updatedQuantity;
@@ -54,7 +62,7 @@ public class ModifyInventoryFormController implements Initializable {
                     inventory.setQuantity(newQt);
                     String transactionType = (updatedQt > 0) ? TransactionType.ADDITION.toString() : TransactionType.SALE.toString();
                     double totalValue = getProductPrice() * newQt;
-                    Transaction transaction = new Transaction(inventory.getProductId(), transactionType, newQt, System.currentTimeMillis(), totalValue, null, null);
+                    Transaction transaction = new Transaction(inventory.getProductId(), transactionType, newQt, System.currentTimeMillis(), totalValue, null, getImagePath());
                     transactionService.save(transaction);
                     inventoryService.update(inventory);
                     ((Stage) updatedQuantity.getScene().getWindow()).close();
@@ -109,5 +117,32 @@ public class ModifyInventoryFormController implements Initializable {
         ObjectId productId = inventory.getProductId();
         Optional<Product> product = productService.getById(productId);
         return product.map(Product::getPrice).orElse(0.0);
+    }
+
+    @FXML
+    public void handleUploadImage() {
+        // Create a FileChooser for selecting an image file
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        // Show the FileChooser and get the selected file
+        File selectedFile = fileChooser.showOpenDialog(uploadBtn.getScene().getWindow());
+        if (selectedFile != null) {
+            imagePath = selectedFile.getAbsolutePath(); // Store the image path
+
+            // Display the selected image in the ImageView
+            Image image = new Image(selectedFile.toURI().toString());
+            billImage.setImage(image);
+
+            // You can now save the imagePath as part of your transaction information
+            System.out.println("Selected Image Path: " + imagePath);
+        }
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 }

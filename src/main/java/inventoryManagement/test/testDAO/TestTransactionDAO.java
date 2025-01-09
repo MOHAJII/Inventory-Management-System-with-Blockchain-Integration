@@ -12,7 +12,7 @@ import java.util.Map;
 public class TestTransactionDAO {
     public static void main(String[] args) {
         TransactionDAO transactionDAO = new ITransactionDAO();
-        Transaction transaction = new Transaction(TransactionType.SALE, "Sale", new ObjectId(), "Bill", new Date(), Map.of(new ObjectId().toString(), 20.0));
+        //Transaction transaction = new Transaction(TransactionType.SALE, "Sale", new ObjectId(), "Bill", new Date(), Map.of(new ObjectId().toString(), 20.0));
         // Save transaction
         //transactionDAO.save(transaction);
         // Get transaction

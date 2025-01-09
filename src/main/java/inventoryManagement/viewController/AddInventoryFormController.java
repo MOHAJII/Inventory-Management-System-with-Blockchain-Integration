@@ -1,11 +1,10 @@
 package inventoryManagement.viewController;
 
-import inventoryManagement.dao.entities.Category;
 import inventoryManagement.dao.entities.Inventory;
 import inventoryManagement.dao.entities.Product;
 import inventoryManagement.service.InventoryService;
 import inventoryManagement.service.ProductService;
-import inventoryManagement.utils.Utils;
+import inventoryManagement.utils.MyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -59,25 +58,25 @@ public class AddInventoryFormController implements Initializable {
                     Inventory newInventory = new Inventory(productId, location, openingSt, reorderTh, reorderQ);
                     if (!inventoryService.isExist(newInventory)){
                         inventoryService.save(newInventory);
-                        Utils.showNotification((Stage) addBtn.getScene().getWindow(), "Inventory added successfully!");
+                        MyUtils.showNotification((Stage) addBtn.getScene().getWindow(), "Inventory added successfully!");
                         ((Stage) addBtn.getScene().getWindow()).close();
                     } else {
-                        Utils.showNotification((Stage) addBtn.getScene().getWindow(), "Inventory already exists!");
+                        MyUtils.showNotification((Stage) addBtn.getScene().getWindow(), "Inventory already exists!");
                     }
                 } else {
-                    Utils.showNotification((Stage) addBtn.getScene().getWindow(), "Invalid input! quantities must be >= 0");
+                    MyUtils.showNotification((Stage) addBtn.getScene().getWindow(), "Invalid input! quantities must be >= 0");
                 }
             }catch (NumberFormatException e) {
-                Utils.showNotification((Stage) addBtn.getScene().getWindow(), "Invalid quantities format");
+                MyUtils.showNotification((Stage) addBtn.getScene().getWindow(), "Invalid quantities format");
             }
         } else {
-            Utils.showNotification((Stage) addBtn.getScene().getWindow(), "All fields required");
+            MyUtils.showNotification((Stage) addBtn.getScene().getWindow(), "All fields required");
         }
     }
 
     @FXML
     public void handleCancel() {
-        Utils.showNotification((Stage) addBtn.getScene().getWindow(), "Cancel");
+        MyUtils.showNotification((Stage) addBtn.getScene().getWindow(), "Cancel");
         ((Stage) cancelBtn.getScene().getWindow()).close();
     }
 

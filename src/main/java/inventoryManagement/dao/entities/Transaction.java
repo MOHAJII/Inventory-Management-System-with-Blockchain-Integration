@@ -3,30 +3,31 @@ package inventoryManagement.dao.entities;
 import inventoryManagement.dao.entities.enums.TransactionType;
 import org.bson.types.ObjectId;
 
+import java.security.Timestamp;
 import java.util.Date;
 import java.util.Map;
 
 public class Transaction {
     private ObjectId id;
-    private TransactionType transactionType;
-    private String description;
+    private ObjectId productId;
+    private String transactionType;
+    private int quantity;
+    private long timestamp;
+    private double totalValue;
     private ObjectId userId;
-    private String bill;
-    private Date date;
-    private Map<String, Double> inventories; // Representing the inventories that changed
-    // Inventories<ProductId, Quantity> And then we map all the products and we change
-    // the inventory of that product
+    private String billPath;
 
     public Transaction() {
     }
 
-    public Transaction(TransactionType transactionType, String description, ObjectId userId, String bill, Date date, Map<String, Double> inventories) {
+    public Transaction(ObjectId productId, String transactionType, int quantity, long timestamp, double totalValue, ObjectId userId, String billPath) {
+        this.productId = productId;
         this.transactionType = transactionType;
-        this.description = description;
+        this.quantity = quantity;
+        this.timestamp = timestamp;
+        this.totalValue = totalValue;
         this.userId = userId;
-        this.bill = bill;
-        this.date = date;
-        this.inventories = inventories;
+        this.billPath = billPath;
     }
 
     public ObjectId getId() {
@@ -37,20 +38,44 @@ public class Transaction {
         this.id = id;
     }
 
-    public TransactionType getTransactionType() {
+    public ObjectId getProductId() {
+        return productId;
+    }
+
+    public void setProductId(ObjectId productId) {
+        this.productId = productId;
+    }
+
+    public String getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(TransactionType transactionType) {
+    public void setTransactionType(String transactionType) {
         this.transactionType = transactionType;
     }
 
-    public String getDescription() {
-        return description;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(double totalValue) {
+        this.totalValue = totalValue;
     }
 
     public ObjectId getUserId() {
@@ -61,40 +86,25 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public String getBill() {
-        return bill;
+    public String getBillPath() {
+        return billPath;
     }
 
-    public void setBill(String bill) {
-        this.bill = bill;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Map<String, Double> getInventories() {
-        return inventories;
-    }
-
-    public void setInventories(Map<String, Double> inventories) {
-        this.inventories = inventories;
+    public void setBillPath(String billPath) {
+        this.billPath = billPath;
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", transactionType=" + transactionType +
-                ", description='" + description + '\'' +
+                ", productId=" + productId +
+                ", transactionType='" + transactionType + '\'' +
+                ", quantity=" + quantity +
+                ", timestamp=" + timestamp +
+                ", totalValue=" + totalValue +
                 ", userId=" + userId +
-                ", bill='" + bill + '\'' +
-                ", date=" + date +
-                ", inventories=" + inventories +
+                ", billPath='" + billPath + '\'' +
                 '}';
     }
 }

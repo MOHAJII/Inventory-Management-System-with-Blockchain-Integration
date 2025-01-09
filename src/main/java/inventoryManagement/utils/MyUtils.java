@@ -13,7 +13,7 @@ import javafx.util.Duration;
 
 import java.util.Optional;
 
-public class Utils {
+public class MyUtils {
     public static boolean showConfirmationAlert(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);

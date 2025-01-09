@@ -1,11 +1,9 @@
 package inventoryManagement.viewController;
 
-import inventoryManagement.dao.entities.Category;
 import inventoryManagement.dao.entities.Inventory;
 import inventoryManagement.dao.entities.Product;
 import inventoryManagement.service.InventoryService;
 import inventoryManagement.service.ProductService;
-import inventoryManagement.utils.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -15,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -52,6 +51,16 @@ public class InventoryPageController implements Initializable{
         inventories = loadInventories();
         System.out.println(inventories);
         inventoryTable.setItems(FXCollections.observableList(inventories));
+        inventoryTable.setRowFactory(tv -> {
+            TableRow<Inventory> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 2) {
+                    Inventory selectedInventory = row.getItem();
+                    openUpdateInventoryForm(selectedInventory);
+                }
+            });
+            return row;
+        });
     }
 
     private void setColumns() {
@@ -65,6 +74,8 @@ public class InventoryPageController implements Initializable{
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         reorderQuantityCol.setCellValueFactory(new PropertyValueFactory<>("reorderQuantity"));
         reorderThresholdCol.setCellValueFactory(new PropertyValueFactory<>("reorderThreshold"));
+
+
     }
 
 
@@ -82,6 +93,26 @@ public class InventoryPageController implements Initializable{
         inventoryTable.setItems(FXCollections.observableList(inventories));
     }
 
+    private void openUpdateInventoryForm(Inventory inventory) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/modify-inventory-form.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller and pass the selected inventory
+            ModifyInventoryFormController controller = loader.getController();
+            controller.setInventory(inventory);
+
+            // Create a new stage for the update form
+            Stage stage = new Stage();
+            stage.setTitle("Update Inventory");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); // Block interaction with the parent window until this one is closed
+            inventories = loadInventories();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private List<Inventory> loadInventories() {
         return FXCollections.observableArrayList(inventoryService.getAll());

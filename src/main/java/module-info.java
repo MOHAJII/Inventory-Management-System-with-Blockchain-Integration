@@ -8,11 +8,11 @@ module inventoryMangement{
     requires org.mongodb.driver.core;
     requires org.mongodb.driver.sync.client;
     requires org.mongodb.bson;
-    requires java.logging;
-    requires java.desktop;
     requires jbcrypt;
     requires io.github.cdimascio.dotenv.java;
     requires redis.clients.jedis;
+    requires org.apache.commons.lang3;
+    requires java.sql;
 
     opens inventoryManagement.service to javafx.fxml;
     exports inventoryManagement;

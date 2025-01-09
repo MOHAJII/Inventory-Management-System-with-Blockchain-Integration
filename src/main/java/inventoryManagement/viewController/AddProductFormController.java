@@ -4,7 +4,7 @@ import inventoryManagement.dao.entities.Category;
 import inventoryManagement.dao.entities.Product;
 import inventoryManagement.service.CategoryService;
 import inventoryManagement.service.ProductService;
-import inventoryManagement.utils.Utils;
+import inventoryManagement.utils.MyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -48,19 +48,19 @@ public class AddProductFormController implements Initializable {
                 ObjectId categoryId = category1.map(Category::getId).orElse(null);
                 Product newProduct = new Product(upcCode, description, name, categoryId, null, priceDouble, wholeSaleDouble);
                 productService.save(newProduct);
-                Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Product added successfully!");
+                MyUtils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Product added successfully!");
                 ((Stage) addProductBtn.getScene().getWindow()).close();
             }catch (NumberFormatException e) {
-                Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Invalid price format");
+                MyUtils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Invalid price format");
             }
         } else {
-            Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "All fields required");
+            MyUtils.showNotification((Stage) addProductBtn.getScene().getWindow(), "All fields required");
         }
     }
 
     @FXML
     public void handleCancel() {
-        Utils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Cancel");
+        MyUtils.showNotification((Stage) addProductBtn.getScene().getWindow(), "Cancel");
         ((Stage) cancelBtn.getScene().getWindow()).close();
     }
 

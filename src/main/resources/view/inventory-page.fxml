@@ -45,7 +45,7 @@
                <children>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="addBtn" mnemonicParsing="false" onAction="#showAddInventoryForm" prefHeight="45.0" prefWidth="305.0" styleClass="button1" text="Add">
+                        <Button fx:id="addInventoryBtn" mnemonicParsing="false" onAction="#showAddInventoryForm" prefHeight="45.0" prefWidth="305.0" styleClass="button1" text="Add">
                            <font>
                               <Font name="Cantarell Regular" size="13.0" />
                            </font>

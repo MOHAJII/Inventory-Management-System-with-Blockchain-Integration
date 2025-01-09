@@ -11,11 +11,12 @@ public class Test extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/login-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 450);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setScene(scene);
         stage.setTitle("Inventory Mangement");
         stage.setMinWidth(700);
-        stage.setMinHeight(500);
+        stage.setResizable(false);
+        stage.setMinHeight(400);
         stage.show();
     }
 

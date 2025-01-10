@@ -30,6 +30,7 @@ public class InventoryPageController implements Initializable{
 
     private final ProductService productService = new ProductService();
     private final InventoryService inventoryService = new InventoryService();
+    private String userName;
     private List<Inventory> inventories;
 
     @FXML
@@ -101,6 +102,7 @@ public class InventoryPageController implements Initializable{
             // Get the controller and pass the selected inventory
             ModifyInventoryFormController controller = loader.getController();
             controller.setInventory(inventory);
+            controller.setUserName(userName);
 
             // Create a new stage for the update form
             Stage stage = new Stage();
@@ -116,5 +118,9 @@ public class InventoryPageController implements Initializable{
 
     private List<Inventory> loadInventories() {
         return FXCollections.observableArrayList(inventoryService.getAll());
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

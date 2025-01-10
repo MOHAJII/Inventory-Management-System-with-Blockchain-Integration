@@ -13,6 +13,7 @@ import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class IInventoryDAO implements InventoryDAO {
     private FindOneAndUpdateOptions options = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
@@ -81,5 +82,39 @@ public class IInventoryDAO implements InventoryDAO {
     @Override
     public Optional<Inventory> updateReorderQuantity(Object id, int reorderQuantity) {
         return Optional.ofNullable(getCollection().findOneAndUpdate(Filters.eq("_id", id), Updates.set("reorderQuantity", reorderQuantity), options));
+    }
+
+    @Override
+    public List<ObjectId> getOutStockInventories() {
+        List<Inventory> inventories = getAll();
+        return inventories.stream()
+                .filter(Inventory::isOutOfStock)
+                .map(Inventory::getId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ObjectId> getLowStockInventories() {
+        List<Inventory> inventories = getAll();
+        return inventories.stream()
+                .filter(Inventory::isLowStock)
+                .map(Inventory::getId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean isOutOfStock(ObjectId id) {
+        Optional<Inventory> optionalInventory = getById(id);
+        Inventory inventory = optionalInventory.orElse(null);
+        assert inventory != null;
+        return inventory.isOutOfStock();
+    }
+
+    @Override
+    public boolean isLowStock(ObjectId id) {
+        Optional<Inventory> optionalInventory = getById(id);
+        Inventory inventory = optionalInventory.orElse(null);
+        assert inventory != null;
+        return inventory.isLowStock();
     }
 }

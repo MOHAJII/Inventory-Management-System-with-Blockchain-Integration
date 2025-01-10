@@ -69,7 +69,7 @@
                               <Font name="DejaVu Serif Condensed Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="totalStock1" text="0" textFill="WHITE">
+                        <Label fx:id="outOfStock" text="0" textFill="WHITE">
                            <font>
                               <Font name="DejaVu Serif Condensed Bold" size="24.0" />
                            </font>
@@ -84,12 +84,12 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0" spacing="20.0" styleClass="container" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Turnover" textFill="WHITE">
+                        <Label text="Low Stock" textFill="WHITE">
                            <font>
                               <Font name="DejaVu Serif Condensed Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="turnOver1" text="1000" textFill="WHITE">
+                        <Label fx:id="lowStock" text="1000" textFill="WHITE">
                            <font>
                               <Font name="DejaVu Serif Condensed Bold" size="24.0" />
                            </font>
@@ -147,8 +147,10 @@
                         </Label>
                         <TableView fx:id="productView" maxWidth="-Infinity" prefHeight="352.0" prefWidth="369.0" style="-fx-background-image: transparent;" stylesheets="@style1.css">
                            <columns>
-                              <TableColumn fx:id="nameCol" editable="false" prefWidth="172.0" resizable="false" sortable="false" text="Product " />
-                              <TableColumn fx:id="productStockCol" editable="false" minWidth="0.0" prefWidth="267.0" resizable="false" sortable="false" text="Stock" />
+                              <TableColumn fx:id="nameCol" editable="false" prefWidth="170.0" resizable="false" sortable="false" text="Product " />
+                              <TableColumn fx:id="productStockCol" editable="false" minWidth="0.0" prefWidth="69.0" resizable="false" sortable="false" text="Stock" />
+                              <TableColumn fx:id="lowStockCol" editable="false" minWidth="0.0" prefWidth="64.0" resizable="false" sortable="false" text="Low" />
+                              <TableColumn fx:id="outStockCol" editable="false" minWidth="0.0" prefWidth="65.0" resizable="false" sortable="false" text="Out" />
                            </columns>
                         </TableView>
                      </children>

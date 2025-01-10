@@ -71,6 +71,12 @@
                               <TableColumn fx:id="wholesaleCol" maxWidth="340.0" prefWidth="157.0" resizable="false" text="WholeSale Price" />
                               <TableColumn fx:id="priceCol" maxWidth="254.0" prefWidth="105.0" resizable="false" text="Price" />
                           </columns>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" />
+                           </VBox.margin>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </children>
                      <padding>

@@ -39,7 +39,7 @@ public class HistoryPageController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/transaction-card.fxml"));
                 VBox transactionBox = fxmlLoader.load();
                 TransactionCardController transactionCardController = fxmlLoader.getController();
-                transactionCardController.setData(transaction.getQuantity(), toDate(transaction.getTimestamp()), transaction.getTransactionType(), null, transaction.getBillPath());
+                transactionCardController.setData(transaction.getQuantity(), toDate(transaction.getTimestamp()), transaction.getTransactionType(), transaction.getUserName(), transaction.getBillPath());
                 if (column == 4) {
                     column = 0;
                     ++row;

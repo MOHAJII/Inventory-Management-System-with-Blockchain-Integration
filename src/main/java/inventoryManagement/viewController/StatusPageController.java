@@ -1,5 +1,7 @@
 package inventoryManagement.viewController;
 
+import javafx.application.Platform;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.web.WebEngine;
@@ -14,7 +16,6 @@ public class StatusPageController implements Initializable {
     @FXML
     private WebView webView;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         webEngine = webView.getEngine();
@@ -22,6 +23,6 @@ public class StatusPageController implements Initializable {
     }
 
     private void loadPage() {
-        webEngine.load("https://www.google.com/");
+       webEngine.load("https://www.google.com");
     }
 }

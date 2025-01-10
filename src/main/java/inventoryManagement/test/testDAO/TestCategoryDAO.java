@@ -4,40 +4,27 @@ import inventoryManagement.dao.ICategoryDAO;
 import inventoryManagement.dao.entities.Category;
 import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class TestCategoryDAO {
     public static void main(String[] args) {
         ICategoryDAO categoryDAO = new ICategoryDAO();
-        Category category = new Category();
-        category.setName("Eau minérale");
-        category.setDescription("Eau menierale valble pour le boire");
+        List<Category> categories = new ArrayList<>();
+        categories.add(new Category("Bottled Water", "Different sizes of bottled water for daily use."));
+        categories.add(new Category("Water Dispensers", "Electric and manual dispensers for convenience."));
+        categories.add(new Category("Accessories", "Reusable caps, filters, and other water accessories."));
+        categories.add(new Category("Delivery Packages", "Subscription plans for regular water delivery."));
+        categories.add(new Category("Flavored Water", "Refreshing flavored water options."));
+        categories.add(new Category("Sparkling Water", "Carbonated water in various sizes."));
+        categories.add(new Category("Industrial Supplies", "Bulk water containers for industrial needs."));
+        categories.add(new Category("Custom Branding", "Personalized water bottles for businesses and events."));
+        categories.add(new Category("Eco-Friendly Products", "Sustainable and refillable water products."));
 
-//        ObjectId save = categoryDAO.save(category);
-//        System.out.println("Category Id : " + save);
-//
-//        // get by Id
-//        Optional<Category> byId = categoryDAO.getById(save);
-//        if (byId.isPresent())
-//            System.out.println(byId.get());
-
-        // GetAll
-        categoryDAO.getAll().forEach(System.out::println);
-
-        // getById
-        Optional<Category> byId = categoryDAO.getById(new ObjectId("6767dca66390af74dd3dcb70"));
-        if (byId.isPresent()) {
-            byId.get().setDescription("Pas d'eau");
-            categoryDAO.update(byId.get());
+        for (Category category : categories) {
+            categoryDAO.save(category);
         }
-
-        categoryDAO.getAll().forEach(System.out::println);
-
-        // delet By id
-        categoryDAO.deleteById(new ObjectId("6767dca66390af74dd3dcb70"));
-
-        categoryDAO.getAll().forEach(System.out::println);
-
 
 
     }

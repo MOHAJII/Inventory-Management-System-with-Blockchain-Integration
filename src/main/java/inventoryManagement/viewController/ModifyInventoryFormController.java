@@ -1,5 +1,6 @@
 package inventoryManagement.viewController;
 
+import inventoryManagement.blockChain.BlockchainWebSocketClient;
 import inventoryManagement.dao.entities.Inventory;
 import inventoryManagement.dao.entities.Product;
 import inventoryManagement.dao.entities.Transaction;
@@ -23,7 +24,6 @@ import org.bson.types.ObjectId;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -33,7 +33,10 @@ public class ModifyInventoryFormController implements Initializable {
     private final InventoryService inventoryService = new InventoryService();
     private final ProductService productService = new ProductService();
     private final TransactionService transactionService = new TransactionService();
+    private final BlockchainWebSocketClient blockchainClient =  new BlockchainWebSocketClient("ws://192.168.1.13:8090/websocket");
+    private String userName;
     private String imagePath;
+
     @FXML
     private Button cancelBtn, decreaseQuantityBtn, increaseQuantityBtn, modifyProductBtn, uploadBtn;
 
@@ -54,24 +57,39 @@ public class ModifyInventoryFormController implements Initializable {
     @FXML
     void handleUpdateInventory(ActionEvent event) {
         try {
-            try {
-                int updatedQt = Integer.parseInt(updatedQuantity.getText());
-                int oldQt = inventory.getQuantity();
-                int newQt = oldQt + updatedQt;
-                if (!(newQt < 0)) {
-                    inventory.setQuantity(newQt);
-                    String transactionType = (updatedQt > 0) ? TransactionType.ADDITION.toString() : TransactionType.SALE.toString();
-                    double totalValue = getProductPrice() * newQt;
-                    Transaction transaction = new Transaction(inventory.getProductId(), transactionType, newQt, System.currentTimeMillis(), totalValue, null, getImagePath());
-                    transactionService.save(transaction);
-                    inventoryService.update(inventory);
-                    ((Stage) updatedQuantity.getScene().getWindow()).close();
-                } else MyUtils.showNotification((Stage) updatedQuantity.getScene().getWindow(), "Error : Negative quantity!!!!!");
-            } catch (NumberFormatException e) {
-                throw new RuntimeException(e);
+            int updatedQt = Integer.parseInt(updatedQuantity.getText());
+            int oldQt = inventory.getQuantity();
+            int newQt = oldQt + updatedQt;
+
+            if (newQt < 0) {
+                MyUtils.showNotification((Stage) updatedQuantity.getScene().getWindow(), "Error: Negative quantity!");
+                return;
             }
+
+            inventory.setQuantity(newQt);
+            String transactionType = (updatedQt > 0) ? TransactionType.PURCHASE.toString() : TransactionType.SALE.toString();
+            double totalValue = getProductPrice() * newQt;
+            String operation = (updatedQt > 0) ? "purchase" : "sale";
+
+            Transaction transaction = new Transaction(inventory.getProductId(), transactionType, newQt,
+                    System.currentTimeMillis(), totalValue, null, userName, getImagePath());
+            transactionService.save(transaction);
+            inventoryService.update(inventory);
+
+            blockchainClient.sendTransaction(
+                    operation,
+                    inventory.getProductId().toString(),
+                    Math.abs(updatedQt),
+                    (long)getProductPrice(),
+                    inventory.getLocation()
+            );
+
+            ((Stage) updatedQuantity.getScene().getWindow()).close();
+
+        } catch (NumberFormatException e) {
+            MyUtils.showNotification((Stage) updatedQuantity.getScene().getWindow(), "Please enter a valid number");
         } catch (RuntimeException e) {
-            MyUtils.showNotification((Stage) updatedQuantity.getScene().getWindow(), "Quantity must be a number");
+            MyUtils.showNotification((Stage) updatedQuantity.getScene().getWindow(), "An error occurred: " + e.getMessage());
         }
     }
 
@@ -144,5 +162,9 @@ public class ModifyInventoryFormController implements Initializable {
 
     public String getImagePath() {
         return imagePath;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

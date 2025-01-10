@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import java.security.Timestamp;
 import java.util.Date;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class Transaction {
     private ObjectId id;
@@ -15,18 +16,20 @@ public class Transaction {
     private long timestamp;
     private double totalValue;
     private ObjectId userId;
+    private String userName;
     private String billPath;
 
     public Transaction() {
     }
 
-    public Transaction(ObjectId productId, String transactionType, int quantity, long timestamp, double totalValue, ObjectId userId, String billPath) {
+    public Transaction(ObjectId productId, String transactionType, int quantity, long timestamp, double totalValue, ObjectId userId, String userName, String billPath) {
         this.productId = productId;
         this.transactionType = transactionType;
         this.quantity = quantity;
         this.timestamp = timestamp;
         this.totalValue = totalValue;
         this.userId = userId;
+        this.userName = userName;
         this.billPath = billPath;
     }
 
@@ -92,6 +95,14 @@ public class Transaction {
 
     public void setBillPath(String billPath) {
         this.billPath = billPath;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override

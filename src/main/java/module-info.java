@@ -11,8 +11,10 @@ module inventoryMangement{
     requires io.github.cdimascio.dotenv.java;
     requires redis.clients.jedis;
     requires org.apache.commons.lang3;
-    requires java.sql;
     requires javafx.web;
+    requires com.fasterxml.jackson.databind;
+    requires javax.websocket.api;
+    requires java.desktop;
 
     opens inventoryManagement.service to javafx.fxml;
     exports inventoryManagement;

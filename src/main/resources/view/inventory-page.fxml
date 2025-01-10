@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="780.0" prefWidth="880.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.InventoryPageController">
+<AnchorPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="880.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventoryManagement.viewController.InventoryPageController">
    <children>
       <BorderPane layoutX="20.0" layoutY="20.0" prefHeight="412.0" prefWidth="771.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="10.0">
          <top>

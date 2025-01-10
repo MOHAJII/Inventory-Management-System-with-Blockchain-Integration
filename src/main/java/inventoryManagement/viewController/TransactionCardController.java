@@ -26,8 +26,10 @@ public class TransactionCardController implements Initializable {
 
     public void setData(int quantity, String transactionDate, String transactionType, String userName, String billImagePath) {
         System.out.println(billImagePath);
+        if (billImagePath != null) {
             Image image = new Image(new File(billImagePath).toURI().toString());
             billImage.setImage(image);
+        }
         this.quantity.setText(String.valueOf(quantity));
         this.transactionDate.setText(transactionDate);
         this.transactionType.setText(transactionType);

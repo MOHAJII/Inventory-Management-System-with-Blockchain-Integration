@@ -29,13 +29,13 @@ public class DashboardController implements Initializable {
     private final InventoryService inventoryService;
 
     @FXML
-    private Label turnOver, totalStock;
+    private Label turnOver, totalStock, lowStock, outOfStock;
 
     @FXML
     private BarChart<String, Double> inventoryBarChat;
 
     @FXML
-    private TableColumn<Inventory, String> nameCol;
+    private TableColumn<Inventory, String> nameCol, lowStockCol, outStockCol;
 
     @FXML
     private TableColumn<Inventory, Double> productStockCol;
@@ -52,6 +52,8 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         turnOver.setText(Double.toString(inventoryService.getTotalAmount()));
         totalStock.setText(Double.toString(inventoryService.getAllInventories()));
+        lowStock.setText(Integer.toString(inventoryService.getLowStockInventories().size()));
+        outOfStock.setText(Integer.toString(inventoryService.getOutOfStockInventories().size()));
         inventoryObservableList.addAll(inventoryService.getAll());
         nameCol.setCellValueFactory(cellData -> {
             ObjectId productId = cellData.getValue().getProductId();
@@ -60,6 +62,8 @@ public class DashboardController implements Initializable {
             return new SimpleStringProperty(productName);
         });
         productStockCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        outStockCol.setCellValueFactory(new PropertyValueFactory<>("outOfStock"));
+        lowStockCol.setCellValueFactory(new PropertyValueFactory<>("lowStock"));
 
         productView.setItems(inventoryObservableList);
         inventoryBarChartInitializer();

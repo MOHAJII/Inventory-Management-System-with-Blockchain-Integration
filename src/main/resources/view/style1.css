@@ -64,28 +64,21 @@
 
 /* Custom table view */
 .table-view {
-    -fx-background-color: transparent; /* White table background */
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
 }
 
-.table-view .column-header,
-.table-view .column-header-background .filler {
-    -fx-background-color: rgba(255, 255, 255, 0.8); /* Light header with transparency */
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: #4A4A4A; /* Dark gray text for better contrast */
+.table-view .column-header {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 16px; /* Increased font size for headers */
-    -fx-alignment: center-left;
+    -fx-alignment: center;
 }
 
 .table-view .cell {
-    -fx-cell-size: 35;
-    -fx-alignment: center-left;
-    -fx-background-color: white; /* Default cell background */
-    -fx-border-color: #D3D3D3; /* Light gray borders */
-    -fx-text-fill: #000000; /* Black text */
-    -fx-font-size: 14px; /* Increased font size for cell text */
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 5px;
 }
 
 

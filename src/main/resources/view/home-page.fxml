@@ -56,7 +56,7 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="450.0" prefWidth="263.0" spacing="10.0" styleClass="container" BorderPane.alignment="CENTER">
+      <VBox onMouseClicked="#openNetwork" prefHeight="450.0" prefWidth="263.0" spacing="10.0" styleClass="container" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
@@ -191,7 +191,8 @@
                         </HBox>
                      </buttons>
                   </ButtonBar>
-                  <ButtonBar fx:id="settingBtn" onMouseClicked="#openSettingPage">
+                  <ButtonBar fx:id="settingBtn1" onMouseClicked="#openSettingPage" />
+                  <ButtonBar fx:id="networkBtn" onMouseClicked="#openNetwork">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -200,13 +201,13 @@
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@images/settingWhite.png" />
+                                    <Image url="@images/blockChainWhite.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <Label alignment="CENTER" styleClass="shadow" text="Settings" textFill="WHITE">
+                              <Label alignment="CENTER" styleClass="shadow" text="Network" textFill="WHITE">
                                  <font>
                                     <Font name="Cantarell Regular" size="22.0" />
                                  </font>
@@ -227,7 +228,7 @@
       </VBox>
    </left>
    <center>
-      <StackPane fx:id="contentArea" prefHeight="421.0" prefWidth="692.0" BorderPane.alignment="CENTER">
+      <StackPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="890.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
          </BorderPane.margin>

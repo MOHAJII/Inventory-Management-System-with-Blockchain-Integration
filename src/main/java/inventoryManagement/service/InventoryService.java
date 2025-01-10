@@ -71,4 +71,22 @@ public class InventoryService {
         }
         return false;
     }
+
+    public List<ObjectId> getOutOfStockInventories() {
+        return inventoryDAO.getOutStockInventories();
+    }
+
+    public List<ObjectId> getLowStockInventories() {
+        return inventoryDAO.getLowStockInventories();
+    }
+
+    public boolean isOutOfStock(ObjectId id) {
+        return inventoryDAO.isOutOfStock(id);
+    }
+
+    public boolean isLowStock(ObjectId id) {
+        return inventoryDAO.isLowStock(id);
+    }
+
+
 }

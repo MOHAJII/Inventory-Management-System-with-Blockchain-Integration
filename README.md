@@ -1,7 +1,7 @@
 # Inventory Management System with Blockchain Integration (JavaFX)
 
-![Authentication Screen](authenication.png)
-![Dashboard](dashboared.png)
+![Authentication Screen](page-authentification.png)
+![Dashboard](dashboard.png)
 
 ## 📌 About
 
